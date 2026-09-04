@@ -81,3 +81,19 @@ The league pool behind the example chart:
 
 A PNG at 8×8in, 300dpi, named `pizza_plot_<player>_2025-26.png`, plus the two
 CSVs above.
+
+## Label spacing
+
+The metric name and percentile badge are anchored at a fixed radius, set in
+section 8.1b:
+
+```r
+LABEL_RADIUS <- 1.28   # where the labels sit; bars run 0-1
+PLOT_MAX     <- 1.35   # panel extent -- this is what sets the wheel's size
+```
+
+The badge hangs inward from `LABEL_RADIUS`, so it has to clear a
+100th-percentile slice. If you change the metric names or the font size and
+they start crowding the bars, raise `LABEL_RADIUS`. Leave `PLOT_MAX` alone —
+`coord_polar` runs with `clip = "off"`, so labels can sit outside the panel,
+and raising it just shrinks the wheel.
