@@ -11,12 +11,11 @@ standard).
 
 ![Example](outputs/pizza_plot_Mila_Holloway_big_ten_2026.png)
 
-## Scripts
+## The script
 
-| Script | Use it when |
-|---|---|
-| `scripts/r/6.25_wbb_pizza_plot.R` | Standard case. Conference membership comes from ESPN's conference/standings API. |
-| `scripts/r/7.10_wbb_pizza_plot_pac12.R` | The rebuilt Pac-12, which isn't yet a selectable conference in ESPN's API, so the member schools are listed explicitly in the CONFIG block and resolved by name. |
+`scripts/r/6.25_wbb_pizza_plot.R`. Conference membership is resolved from
+ESPN's conference/standings API, so any conference it knows about works by
+name.
 
 ## Configuring
 
@@ -57,11 +56,9 @@ without a headshot if none is found.
 
 ## Data
 
-The conference pools behind the example charts, one row per player with raw
-per-40 rates and the weighted percentiles the slices are drawn from:
-
-- `data/wbb_big_ten_2026.csv` — from the standard script
-- `data/wbb_pac_12_2026.csv` — from the Pac-12 variant
+`data/wbb_big_ten_2026.csv` is the conference pool behind the example chart —
+one row per player, with raw per-40 rates and the weighted percentiles the
+slices are drawn from.
 
 ## Output
 
