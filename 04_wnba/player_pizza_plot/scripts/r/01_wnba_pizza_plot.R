@@ -73,6 +73,17 @@ weighted_mean_safe <- function(x, w) {
 main_player <- "Olivia Miles"
 player_team <- "Minnesota Lynx"
 
+# What to print after the team name in the title. This is derived from the data
+# that actually went into the chart, so it can't go stale as the season runs on.
+#   "games"  -> "39 Games"
+#   "asof"   -> "As of Sep 3, 2026"
+#   "both"   -> "39 Games | Through Sep 3, 2026"
+#   "season" -> "2026 Season"
+# Set PERIOD_TEXT to a string of your own to override it entirely, e.g.
+# PERIOD_TEXT <- "First 10 Games" if you deliberately want a fixed window.
+PERIOD_LABEL <- "both"
+PERIOD_TEXT  <- NULL
+
 ###############################################
 # 1. Pull ALL game-level player box data (2026)
 ###############################################
@@ -158,7 +169,9 @@ wnba_player_season_2026 <- wnba_player_box_2026_clean %>%
     athlete_position_abbreviation = last(athlete_position_abbreviation),
     team_id                       = last(team_id),
     team_short_display_name       = last(team_short_display_name),
-    games_played  = n_distinct(game_id),
+    games_played    = n_distinct(game_id),
+    first_game_date = min(game_date, na.rm = TRUE),
+    last_game_date  = max(game_date, na.rm = TRUE),
     games_started = sum(starter, na.rm = TRUE),
     minutes_total = sum(minutes, na.rm = TRUE),
     pts_total     = sum(points, na.rm = TRUE),
@@ -383,7 +396,8 @@ wnba_player_season_2026_lab <- wnba_player_season_2026 %>%
     team     = team_short_display_name,
     position = athlete_position_abbreviation,
     headshot_url,
-    games_played, games_started, minutes_total, mpg,
+    games_played, first_game_date, last_game_date,
+    games_started, minutes_total, mpg,
     pts_total,  ppg,  pts_per_36,
     reb_total,  rpg,  reb_per_36,
     oreb_total, oreb_pg, oreb_per_36,
@@ -428,6 +442,48 @@ player_row <- wnba_player_season_2026_lab %>%
 #   select(player, team, position, games_played, ppg, rpg, apg, spg, bpg) %>%
 #   kable(format = "simple", digits = 2) %>%
 #   print()
+
+###############################################
+# 6.6 Title strings, derived from the data
+###############################################
+# Everything the title says about scope comes from player_row, so re-running
+# the script later re-labels the chart automatically.
+
+if (nrow(player_row) == 0) {
+  stop("No rows for '", main_player, "'. Check the spelling against ",
+       "wnba_player_season_2026_lab$player.", call. = FALSE)
+}
+
+n_games   <- player_row$games_played[1]
+last_date <- as.Date(player_row$last_game_date[1])
+season_yr <- player_row$season[1]
+
+period_text <- if (!is.null(PERIOD_TEXT)) {
+  PERIOD_TEXT
+} else {
+  switch(PERIOD_LABEL,
+    games  = paste0(n_games, " Game", if (n_games == 1) "" else "s"),
+    asof   = paste0("As of ", format(last_date, "%b %e, %Y")),
+    season = paste0(season_yr, " Season"),
+    both   = paste0(n_games, " Game", if (n_games == 1) "" else "s",
+                    " | Through ", format(last_date, "%b %e, %Y")),
+    stop("PERIOD_LABEL must be one of \"games\", \"asof\", \"both\", \"season\".",
+         call. = FALSE)
+  )
+}
+period_text <- gsub("  +", " ", period_text)   # format(%e) pads single digits
+
+# The comparison pool is the player's own position group, so name it from her
+# position rather than assuming a guard.
+pos_abbr  <- player_row$position[1]
+pos_plural <- switch(as.character(pos_abbr),
+                     G = "Guards", F = "Forwards", C = "Centers",
+                     paste0(pos_abbr, "s"))
+pos_single <- switch(as.character(pos_abbr),
+                     G = "Guard", F = "Forward", C = "Center",
+                     as.character(pos_abbr))
+
+message("Title scope: ", period_text, "  |  pool: All WNBA ", pos_plural)
 
 # Position average for per-game stats (unweighted mean across position group)
 pos_avg <- wnba_player_season_2026_lab %>%
@@ -704,12 +760,12 @@ if (!is.null(player_circle)) {
 
 final_plot <- final_plot +
   cowplot::draw_label(
-    paste0(main_player, " | ", player_team, " | First 10 Games"),
+    paste0(main_player, " | ", player_team, " | ", period_text),
     x = 0.5, y = 0.96, hjust = 0.5, vjust = 1,
     fontface = "bold", color = LETTER_COLOR, size = 14
   ) +
   cowplot::draw_label(
-    "Percentile Profile vs. All WNBA Guards | Per 36 Min",
+    paste0("Percentile Profile vs. All WNBA ", pos_plural, " | Per 36 Min"),
     x = 0.5, y = 0.932, hjust = 0.5, vjust = 1, # y = 0.935
     color = LETTER_COLOR, size = 11
   ) +
@@ -731,7 +787,7 @@ final_plot <- final_plot +
     color = AVG_BAR_COLOR, size = 14
   ) +
   cowplot::draw_label(
-    "Guard Average (shaded)",
+    paste0(pos_single, " Average (shaded)"),
     x = 0.635, y = 0.07, hjust = 0.5, vjust = 1,
     color = LETTER_COLOR, size = 9, fontface = "italic"
   )

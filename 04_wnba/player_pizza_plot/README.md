@@ -11,9 +11,31 @@ group. A reference ring marks the position-group average.
 Near the top of `scripts/r/01_wnba_pizza_plot.R`:
 
 ```r
-main_player <- "Olivia Miles"
-player_team <- "Minnesota Lynx"
+main_player  <- "Olivia Miles"
+player_team  <- "Minnesota Lynx"
+
+PERIOD_LABEL <- "both"    # what the title says about scope
+PERIOD_TEXT  <- NULL      # or override it with a string of your own
 ```
+
+Swap in any player and the rest follows. The comparison pool is her own
+position group, and the title names it from her position — put a center in and
+it reads "vs. All WNBA Centers" with a "Center Average" legend.
+
+### What the title says about scope
+
+`PERIOD_LABEL` is read off the data that actually went into the chart, so it
+can't go stale as the season runs on:
+
+| Value | Title reads |
+|---|---|
+| `"games"` | `39 Games` |
+| `"asof"` | `As of Aug 30, 2026` |
+| `"both"` (default) | `39 Games \| Through Aug 30, 2026` |
+| `"season"` | `2026 Season` |
+
+Set `PERIOD_TEXT` to any string to override it — use that if you deliberately
+want a fixed window, e.g. `PERIOD_TEXT <- "First 10 Games"`.
 
 and the season in section 1:
 

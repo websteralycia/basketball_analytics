@@ -18,6 +18,7 @@
 *.rds
 
 # --- R ---
+Rplots.pdf
 .Rhistory
 .RData
 .Rapp.history
