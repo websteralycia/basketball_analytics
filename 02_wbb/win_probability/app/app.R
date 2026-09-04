@@ -132,18 +132,18 @@ ui <- fluidPage(
            background: var(--bg); color: var(--text); }
     .wrap { max-width: 940px; margin: 0 auto; padding: 28px 18px 64px; }
     h2 { font-weight: 600; letter-spacing: -.01em; margin: 0 0 4px; }
-    .sub { color: var(--muted); font-size: 14px; margin-bottom: 26px; }
     .card { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
             padding: 18px 20px; margin-bottom: 18px; }
     .card h4 { font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
                color: var(--muted); font-weight: 700; margin: 0 0 14px; }
 
     /* Header row: title on the left, theme button on the right. */
-    .hdr { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+    .hdr { display: flex; justify-content: space-between; align-items: center; gap: 16px;
+           margin-bottom: 26px; }
     .themebtn { background: var(--btn-bg); color: var(--text-2);
                 border: 1px solid var(--border); border-radius: 5px;
                 padding: 5px 13px; font-size: 12.5px; cursor: pointer;
-                flex: none; margin-top: 3px; }
+                flex: none; }
     .themebtn:hover { color: var(--text); border-color: var(--muted); }
 
     /* Label-left / control-right, the way inpredictable's form reads. The
@@ -208,11 +208,7 @@ ui <- fluidPage(
   "))),
   div(class = "wrap",
     div(class = "hdr",
-      div(
-        h2("NCAA Women's Win Probability"),
-        div(class = "sub",
-            "Describe a moment in a game. Naming the teams is optional; the site always counts.")
-      ),
+      h2("NCAA Women's Win Probability"),
       # Follows the OS by default; the button overrides and the choice sticks.
       tags$button(id = "themebtn", class = "themebtn",
                   onclick = "wpToggleTheme()", "Dark")
@@ -271,7 +267,7 @@ ui <- fluidPage(
         ),
 
         div(class = "card",
-          h4("Matchup — optional"),
+          h4("Matchup (optional)"),
           div(class = "grid",
             div(class = "lbl", "Your team"),
             div(selectInput("team1", NULL, TEAM_CHOICES, selected = "")),
@@ -386,8 +382,10 @@ server <- function(input, output, session) {
   })
 
   output$spread_note <- renderText({
+    # No matchup: the card is already titled "optional" and the About panel
+    # explains what blank means, so there is nothing left to say here.
     if (!nzchar(input$team1) || !nzchar(input$team2) || input$team1 == input$team2)
-      return("Optional — without it both teams are treated as equally strong. The site above still counts.")
+      return("")
     sprintf("Team strength applied, from the ratings as of %s.",
             format(BOARD$as_of[1]))
   })
