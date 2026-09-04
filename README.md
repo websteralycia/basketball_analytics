@@ -13,6 +13,7 @@ change — team, player, conference, season — and sensible defaults for the re
 |---|---|
 | [`01_mbb/team_efficiency`](01_mbb/team_efficiency) | NCAA men's offensive/defensive rating quadrant chart, team logos plotted against the national average |
 | [`02_wbb/team_efficiency`](02_wbb/team_efficiency) | Same chart for NCAA women's basketball |
+| [`02_wbb/team_four_factors`](02_wbb/team_four_factors) | One NCAA women's team against every team in its conference on the Four Factors, offense and defense |
 | [`02_wbb/player_pizza_plot`](02_wbb/player_pizza_plot) | Eight-slice percentile radar for one NCAA women's player against her conference, within her position group |
 | [`03_nba/team_efficiency`](03_nba/team_efficiency) | NBA efficiency landscape for all 30 teams, plus a 4:5 Instagram crop and transparent variants |
 | [`03_nba/player_pizza_plot`](03_nba/player_pizza_plot) | NBA player percentile radar against the league, within position |
