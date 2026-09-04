@@ -72,15 +72,19 @@ install.packages(c("wehoop", "dplyr", "readr", "ggplot2", "tidyr",
 
 ## Data
 
-The league pool behind the example chart:
+`data/wnba_player_season_2026_full.csv` is the league pool behind the example
+chart — one row per player with every computed column: totals, per-36 rates,
+the advanced metrics, and the within-position weighted percentiles the slices
+are drawn from.
 
-- `data/wnba_player_season_2026_full.csv` — every computed column
-- `data/wnba_player_season_2026_lab.csv` — the trimmed version
+The script also writes a trimmed `_lab` version alongside it, which is the same
+rows with fewer columns. That one isn't committed — the full table is a
+superset of it.
 
 ## Output
 
 A PNG at 8×8in, 300dpi, named `pizza_plot_<player>_2025-26.png`, plus the two
-CSVs above.
+CSVs.
 
 ## Label spacing
 
