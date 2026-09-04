@@ -392,7 +392,7 @@ server <- function(input, output, session) {
 
   output$caveat <- renderText({
     s <- secs_left()
-    if (s <= 0) return("Game over — this is arithmetic, not a model.")
+    if (s <= 0) return("Game over")
     if (s <= 5) return("Under 5 seconds the model is only slightly better than 'whoever leads wins'.")
     if (as.integer(input$period) >= 5)
       return("Overtime is modelled as its own 5-minute game, not as a fourth quarter.")
