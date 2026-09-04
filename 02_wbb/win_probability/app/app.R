@@ -315,12 +315,12 @@ ui <- fluidPage(
         div(class = "card",
           h4("About the matchup"),
           div(class = "note",
-            "Naming the teams tilts the numbers toward the stronger one. NCAAW ",
-            "has no betting line for most games, so that tilt is built from ",
-            "opponent-adjusted efficiency ratings. Leave the matchup blank and ",
-            "the two teams are treated as equally strong — but home court still ",
-            "applies either way, and it is worth about 4 points here, far more ",
-            "than in the pro game.",
+            "Naming both teams tilts the numbers toward the stronger one. Most ",
+            "NCAAW games have no betting line, so that tilt comes from ",
+            "opponent-adjusted efficiency ratings instead.",
+            br(), br(),
+            "Leave the matchup blank and the two teams are treated as equally ",
+            "strong. Home court advantage still applies either way.",
             br(), br(),
             textOutput("model_note", inline = TRUE))
         )
