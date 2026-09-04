@@ -12,12 +12,32 @@
 #   Fetching lives in nba_data.R. Presentation lives in the analysis script.
 #
 # CONVENTIONS AND WHY
-#   Possessions   FGA + 0.44*FTA + TOV - OREB
-#                 This is the NBA.com convention. It omits the team-rebound
-#                 adjustment in Oliver's fuller formula, which uses
-#                 0.44*FTA and splits credit on missed FT rebounds. Oliver's
-#                 version typically reads 1-3 points higher on ORtg. Either is
-#                 defensible; state which you used.
+#   Possessions   Oliver's estimate, averaged across the two teams:
+#
+#                   FGA + 0.44*FTA + TOV
+#                       - 1.07 * (OREB / (OREB + OppDREB)) * (FGA - FGM)
+#
+#                 VALIDATED AGAINST NBA.COM, all 30 teams, 2025-26. Mean error
+#                 +0.06 ORtg and +0.05 DRtg (sd 0.24 / 0.20); worst single team
+#                 0.64. Possession count within ~4 of their tracked figure.
+#
+#                 The simpler FGA + 0.44*FTA + TOV - OREB is still here as
+#                 nba_possessions(), but do not reach for it expecting NBA.com:
+#                 measured against all 30 teams it overstates possessions by
+#                 ~147 a season (~1.8 a game) and so reads 2.0 points LOW on
+#                 both ORtg and DRtg. Net rating survives, since both ends
+#                 shift together, but neither component matches the site.
+#
+#                 The reason is the rebound term. Subtracting raw OREB
+#                 undercounts extended possessions, because team offensive
+#                 rebounds and missed-free-throw rebounds are never credited
+#                 to a player and so never reach the box score. Oliver's term
+#                 estimates the true count instead of trusting the tally.
+#
+#                 Averaged rather than computed per side: two teams in a game
+#                 face nearly the same number of possessions, so averaging the
+#                 two estimates cancels noise. Measured, it cuts the spread of
+#                 the error against NBA.com from sd 0.33 to 0.24.
 #
 #   Turnovers     ESPN box scores carry THREE turnover columns:
 #                   turnovers        player-attributed turnovers only
@@ -130,13 +150,35 @@ nba_pair_opponents <- function(df) {
 }
 
 
-#' Possessions estimate
+#' Possessions, simple box-score estimate
+#'
+#' Kept for comparison and for callers that have no rebound split. This is NOT
+#' what NBA.com reports -- see the note at the top of this file. Prefer
+#' `nba_possessions_oliver()`.
 #'
 #' @param fga,fta,tov,oreb Numeric vectors of equal length.
-#' @param ft_coef Free-throw coefficient, default 0.44 (NBA.com convention).
+#' @param ft_coef Free-throw coefficient, default 0.44.
 #' @return Numeric vector of estimated possessions.
 nba_possessions <- function(fga, fta, tov, oreb, ft_coef = 0.44) {
   fga + ft_coef * fta + tov - oreb
+}
+
+
+#' Possessions, Oliver's estimate with the team-rebound adjustment
+#'
+#' Replaces the raw OREB subtraction with an estimate of offensive rebounds
+#' that includes the ones the box score never attributes to a player. This is
+#' the one that reproduces NBA.com.
+#'
+#' @param fga,fgm,fta,tov,oreb Team counting stats.
+#' @param opp_dreb Opponent defensive rebounds, for the rebound rate.
+#' @param ft_coef Free-throw coefficient, default 0.44.
+#' @return Numeric vector of estimated possessions.
+nba_possessions_oliver <- function(fga, fgm, fta, tov, oreb, opp_dreb,
+                                   ft_coef = 0.44) {
+  reb_chances <- oreb + opp_dreb
+  orb_rate    <- ifelse(reb_chances > 0, oreb / reb_chances, 0)
+  fga + ft_coef * fta + tov - 1.07 * orb_rate * (fga - fgm)
 }
 
 
@@ -203,8 +245,16 @@ nba_game_minutes <- function(periods) {
 nba_add_metrics <- function(df, ft_coef = 0.44) {
   df %>%
     mutate(
-      poss     = nba_possessions(fga, fta, tov, oreb, ft_coef = ft_coef),
-      opp_poss = nba_possessions(opp_fga, opp_fta, opp_tov, opp_oreb, ft_coef = ft_coef),
+      # Both sides get the SAME possession count: the average of the two
+      # estimates. A game hands the two teams within a possession or two of
+      # each other, so the average is the better estimate of a quantity they
+      # effectively share, and it is what matches NBA.com.
+      poss_tm_  = nba_possessions_oliver(fga, fgm, fta, tov, oreb, opp_dreb,
+                                         ft_coef = ft_coef),
+      poss_opp_ = nba_possessions_oliver(opp_fga, opp_fgm, opp_fta, opp_tov,
+                                         opp_oreb, dreb, ft_coef = ft_coef),
+      poss     = (poss_tm_ + poss_opp_) / 2,
+      opp_poss = poss,
 
       ortg = ifelse(poss > 0, 100 * pts / poss, NA_real_),
       drtg = ifelse(opp_poss > 0, 100 * opp_pts / opp_poss, NA_real_),

@@ -49,6 +49,30 @@ INPUT_MAP <- c(tov = "turnovers", fg3m = "threes_made")
 Logos need `team_abbreviation`. Without it the script falls back to labelled
 points rather than failing — still readable, just not branded.
 
+## The possession estimate, and why it matters
+
+Ratings are points per 100 possessions, and possessions are estimated from the
+box score. Which estimate you use moves the answer by about two points.
+
+This uses Oliver's, averaged across the two teams:
+
+```
+FGA + 0.44*FTA + TOV - 1.07 * (OREB / (OREB + OppDREB)) * (FGA - FGM)
+```
+
+Validated against NBA.com across all 30 teams, 2025-26: mean error **+0.06
+ORtg and +0.05 DRtg**, worst single team 0.64.
+
+The simpler `FGA + 0.44*FTA + TOV - OREB` is often called the NBA.com formula,
+but it does not reproduce NBA.com. It subtracts the raw offensive rebound
+count, which undercounts extended possessions — team offensive rebounds and
+missed-free-throw rebounds are never credited to a player, so they never reach
+the box score. Measured across the same 30 teams it overstates possessions by
+~1.8 a game and reads **2.0 points low on both ORtg and DRtg**.
+
+Net rating is unaffected either way, since both ends shift together. It's the
+components that were wrong.
+
 ## Two things worth knowing
 
 **stats.nba.com doesn't work from R on some machines.** It blocks libcurl at

@@ -99,9 +99,19 @@ team_season_totals_2026 <- team_game_w_opp_2026_filtered %>%
     total_pts         = sum(team_score,               na.rm = TRUE),
     total_pts_allowed = sum(team_score_opp,           na.rm = TRUE),
     total_fga         = sum(field_goals_attempted,    na.rm = TRUE),
+    total_fgm         = sum(field_goals_made,         na.rm = TRUE),
     total_fta         = sum(free_throws_attempted,    na.rm = TRUE),
     total_tov         = sum(turnovers,                na.rm = TRUE),
     total_oreb        = sum(offensive_rebounds,       na.rm = TRUE),
+    total_dreb        = sum(defensive_rebounds,       na.rm = TRUE),
+
+    # The opponent side, needed for the possession estimate below
+    total_fga_opp     = sum(field_goals_attempted_opp, na.rm = TRUE),
+    total_fgm_opp     = sum(field_goals_made_opp,      na.rm = TRUE),
+    total_fta_opp     = sum(free_throws_attempted_opp, na.rm = TRUE),
+    total_tov_opp     = sum(turnovers_opp,             na.rm = TRUE),
+    total_oreb_opp    = sum(offensive_rebounds_opp,    na.rm = TRUE),
+    total_dreb_opp    = sum(defensive_rebounds_opp,    na.rm = TRUE),
     .groups = "drop"
   )
 
@@ -111,14 +121,42 @@ team_season_totals_2026 <- team_game_w_opp_2026_filtered %>%
 
 team_efficiency_2026 <- team_season_totals_2026 %>%
   mutate(
-    # Standard NCAA possession estimate
-    possessions = total_fga + 0.44 * total_fta + total_tov - total_oreb,
+    # Possessions, Oliver's estimate, averaged across the two teams.
+    #
+    #   FGA + 0.44*FTA + TOV - 1.07 * (OREB/(OREB+OppDREB)) * (FGA - FGM)
+    #
+    # The simpler FGA + 0.44*FTA + TOV - OREB subtracts the raw offensive
+    # rebound count, which undercounts extended possessions: team offensive
+    # rebounds and missed-free-throw rebounds never get credited to a player,
+    # so they never reach the box score. Oliver's term estimates the true
+    # count instead of trusting the tally.
+    #
+    # Measured on the NBA, where an official figure exists to check against,
+    # the simple version overstates possessions by ~1.8 a game and so reads
+    # 2.0 points LOW on both ORtg and DRtg. Net rating survives, since both
+    # ends shift together, but neither component matches. See
+    # 03_nba/team_efficiency/scripts/r/nba_metrics.R for that validation.
+    #
+    # NOTE: the 1.07 and 0.44 coefficients were fitted on NBA data. Nobody
+    # publishes an official possession count for this league to check them
+    # against, so treat these as the NBA convention applied here rather than
+    # as verified for the women's college game.
+    orb_rate_    = ifelse((total_oreb + total_dreb_opp) > 0,
+                          total_oreb / (total_oreb + total_dreb_opp), 0),
+    orb_rate_opp = ifelse((total_oreb_opp + total_dreb) > 0,
+                          total_oreb_opp / (total_oreb_opp + total_dreb), 0),
+    poss_tm_  = total_fga + 0.44 * total_fta + total_tov -
+                  1.07 * orb_rate_ * (total_fga - total_fgm),
+    poss_opp_ = total_fga_opp + 0.44 * total_fta_opp + total_tov_opp -
+                  1.07 * orb_rate_opp * (total_fga_opp - total_fgm_opp),
+    possessions = (poss_tm_ + poss_opp_) / 2,
 
     # Efficiency ratings (points per 100 possessions)
     ortg    = 100 * (total_pts         / possessions),
     drtg    = 100 * (total_pts_allowed / possessions),
     net_rtg = ortg - drtg
   ) %>%
+  select(-orb_rate_, -orb_rate_opp, -poss_tm_, -poss_opp_) %>%
   arrange(desc(net_rtg))
 
 ###############################################

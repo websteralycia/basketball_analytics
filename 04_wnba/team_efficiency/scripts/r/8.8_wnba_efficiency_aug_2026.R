@@ -55,7 +55,13 @@ if (TOPUP_LIVE) {
   new_game_ids <- unlist(lapply(scan_dates, function(d) {
     d  <- as.Date(d, origin = "1970-01-01")
     sb <- try(espn_wnba_scoreboard(season = format(d, "%Y%m%d")), silent = TRUE)
-    if (inherits(sb, "try-error") || !NROW(sb)) return(NULL)
+    # On a date with no games this does not error -- it returns a bare atomic
+    # vector, whose NROW() is 1, so a length check alone lets it through and
+    # the sb$game_id below fails with "$ operator is invalid for atomic
+    # vectors". Once the season ended, every scanned date took that path and
+    # the whole script died. Demand an actual frame with the columns we read.
+    if (inherits(sb, "try-error") || !is.data.frame(sb) || !NROW(sb) ||
+        !all(c("game_id", "status_name") %in% names(sb))) return(NULL)
     as.character(sb$game_id[sb$status_name == "STATUS_FINAL"])
   }))
 
@@ -142,9 +148,11 @@ team_game_totals <- wnba_player_box %>%
   summarise(
     pts   = sum(points, na.rm = TRUE),
     fga   = sum(field_goals_attempted, na.rm = TRUE),
+    fgm   = sum(field_goals_made, na.rm = TRUE),
     fta   = sum(free_throws_attempted, na.rm = TRUE),
     tov   = sum(turnovers, na.rm = TRUE),
     oreb  = sum(offensive_rebounds, na.rm = TRUE),
+    dreb  = sum(defensive_rebounds, na.rm = TRUE),
     .groups = "drop"
 )
 
@@ -196,15 +204,48 @@ team_efficiency <- team_game_w_opp %>%
     total_pts_scored = sum(pts),
     total_pts_allowed = sum(pts_opp),
     total_fga = sum(fga),
+    total_fgm = sum(fgm),
     total_fta = sum(fta),
     total_tov = sum(tov),
     total_oreb = sum(oreb),
+    total_dreb = sum(dreb),
+
+    # The opponent side, needed for the possession estimate
+    total_fga_opp  = sum(fga_opp),
+    total_fgm_opp  = sum(fgm_opp),
+    total_fta_opp  = sum(fta_opp),
+    total_tov_opp  = sum(tov_opp),
+    total_oreb_opp = sum(oreb_opp),
+    total_dreb_opp = sum(dreb_opp),
     .groups = "drop"
   ) %>%
   mutate(
-    # AJ Recommended Estimated Possesion Formula
-    # FGA + .44 * FTA + TOV - OREB
-    possessions = total_fga + (.44 * total_fta) + total_tov - total_oreb,
+    # Possessions, Oliver's estimate, averaged across the two teams:
+    #
+    #   FGA + 0.44*FTA + TOV - 1.07 * (OREB/(OREB+OppDREB)) * (FGA - FGM)
+    #
+    # This replaces FGA + .44*FTA + TOV - OREB, which subtracts the raw
+    # offensive rebound count. That undercounts extended possessions, because
+    # team offensive rebounds and missed-free-throw rebounds are never
+    # credited to a player and so never reach the box score.
+    #
+    # Checked on the NBA, where an official possession count exists: the
+    # simple version overstates possessions by ~1.8 a game and reads 2.0
+    # points LOW on both ORtg and DRtg against NBA.com, while this one lands
+    # within 0.06. Net rating is unaffected either way, since both ends move
+    # together -- it is the components that were off.
+    #
+    # NOTE: 1.07 and 0.44 were fitted on NBA data and no official WNBA
+    # possession count is published to re-check them here.
+    orb_rate_    = ifelse((total_oreb + total_dreb_opp) > 0,
+                          total_oreb / (total_oreb + total_dreb_opp), 0),
+    orb_rate_opp = ifelse((total_oreb_opp + total_dreb) > 0,
+                          total_oreb_opp / (total_oreb_opp + total_dreb), 0),
+    poss_tm_  = total_fga + 0.44 * total_fta + total_tov -
+                  1.07 * orb_rate_ * (total_fga - total_fgm),
+    poss_opp_ = total_fga_opp + 0.44 * total_fta_opp + total_tov_opp -
+                  1.07 * orb_rate_opp * (total_fga_opp - total_fgm_opp),
+    possessions = (poss_tm_ + poss_opp_) / 2,
 
     # Offensive Rating: Points scored per 100 possessions
     ortg = 100 * (total_pts_scored / possessions),
