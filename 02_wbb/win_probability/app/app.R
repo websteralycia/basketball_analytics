@@ -392,6 +392,14 @@ server <- function(input, output, session) {
 
   output$caveat <- renderText({
     s <- secs_left()
+    # A tie at 0:00 is the one expired clock that is not a finished game. The
+    # model already knows: it returns exactly 0% or 100% once someone leads,
+    # and only here does it return anything in between -- the chance of
+    # winning the overtime, home court included. So the number stays and the
+    # label says what it is.
+    mg <- input$margin; if (is.null(mg) || is.na(mg)) mg <- 0
+    if (s <= 0 && mg == 0)
+      return("Tied at the buzzer. This is your chance of winning in overtime.")
     if (s <= 0) return("Game over")
     if (s <= 5) return("Under 5 seconds the model is only slightly better than 'whoever leads wins'.")
     if (as.integer(input$period) >= 5)
