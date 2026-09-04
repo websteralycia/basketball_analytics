@@ -1,0 +1,31 @@
+# --- Credentials: never commit ---
+.Renviron
+.env
+**/api_creds/
+*creds*
+*secret*
+*token*
+
+# --- Data stays local (this repo is scripts + outputs only) ---
+data/
+*.csv
+*.xlsx
+*.xls
+*.parquet
+*.rds
+
+# --- R ---
+.Rhistory
+.RData
+.Rapp.history
+.Rproj.user/
+*.Rproj
+
+# --- Python ---
+venv/
+__pycache__/
+*.pyc
+
+# --- macOS / Office ---
+.DS_Store
+~$*
