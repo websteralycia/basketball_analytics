@@ -5,12 +5,12 @@
 #   Rscript ncaa_d3_wbb_run_mwc.R full    # every MWC game
 #
 # Writes a wehoop-shaped player box CSV that
-# "8.16 02 CLASS 10 - LAB - WBB - 2026 D3.R" reads in step 1.
+# "8.16_ncaa_d3_wbb_build_dataset.R" reads in step 1.
 ###############################################
 
 # The pull script lives next to this one, so find it rather than hardcoding a
 # path -- this pair has to run from wherever the folder was unzipped.
-PULL <- "8.16 ncaa_d3_wbb_pull.R"
+PULL <- "8.16_ncaa_d3_wbb_pull.R"
 here <- NULL
 for (d in c(".", "scripts/r", "02_wbb/d3_player_dataset/scripts/r"))
   if (file.exists(file.path(d, PULL))) { here <- normalizePath(d); break }

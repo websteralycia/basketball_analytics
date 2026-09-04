@@ -37,14 +37,14 @@ which defaults to your Desktop.
 
 | Script | Does |
 |---|---|
-| `8.16 ncaa_d3_wbb_pull.R` | The scraper. Sourced by the runner, not run directly. |
-| `8.16 ncaa_d3_wbb_run_mwc.R` | Pulls the conference's games, writes a player-box CSV shaped like `wehoop`'s |
-| `8.16 02 CLASS 10 - LAB - WBB - 2026 D3.R` | Aggregates to player-seasons, adds rates and within-position percentiles |
-| `8.16 ncaa_d3_wbb_format_xlsx.R` | Reads that CSV, writes the styled workbook |
+| `8.16_ncaa_d3_wbb_pull.R` | The scraper. Sourced by the runner, not run directly. |
+| `8.16_ncaa_d3_wbb_run_mwc.R` | Pulls the conference's games, writes a player-box CSV shaped like `wehoop`'s |
+| `8.16_ncaa_d3_wbb_build_dataset.R` | Aggregates to player-seasons, adds rates and within-position percentiles |
+| `8.16_ncaa_d3_wbb_format_xlsx.R` | Reads that CSV, writes the styled workbook |
 
 ```sh
-Rscript "8.16 ncaa_d3_wbb_run_mwc.R" smoke   # ~20 games, to check it works
-Rscript "8.16 ncaa_d3_wbb_run_mwc.R" full    # the whole conference
+Rscript 8.16_ncaa_d3_wbb_run_mwc.R smoke   # ~20 games, to check it works
+Rscript 8.16_ncaa_d3_wbb_run_mwc.R full    # the whole conference
 ```
 
 Change `MWC_TEAMS` in the runner to point at a different conference.

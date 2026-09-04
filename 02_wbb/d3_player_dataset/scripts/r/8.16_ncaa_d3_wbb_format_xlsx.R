@@ -6,7 +6,7 @@
 # CSV and writes a styled workbook -- it does not recompute any
 # statistic, so every number matches the CSV exactly.
 #
-#   Rscript "8.16 ncaa_d3_wbb_format_xlsx.R"
+#   Rscript 8.16_ncaa_d3_wbb_format_xlsx.R
 #
 # TWO SHADED SHEETS, IDENTICAL NUMBERS
 #   "By Position" shades each stat by where the player ranks
