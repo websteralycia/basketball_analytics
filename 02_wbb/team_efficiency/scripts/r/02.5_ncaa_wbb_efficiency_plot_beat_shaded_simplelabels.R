@@ -120,7 +120,7 @@ ggplot(team_efficiency, aes(x = ortg, y = drtg)) +
   labs(
     title    = "NCAA Women's Tournament Efficiency Landscape",
     subtitle = "Teams in the <span style='color:#4CAF50;'>**top-right**</span> have the best offense AND defense — 2025-26 Regular Season",
-    x        = "Offensive Efficiency \u2192",
+    x        = "Offensive Efficiency (higher = better) \u2192",
     y        = "Defensive Efficiency (lower = better) \u2192 ",
     #caption  = "Data via wehoop"
   ) +
