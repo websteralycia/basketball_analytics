@@ -121,7 +121,7 @@ ggplot(team_efficiency, aes(x = ortg, y = drtg)) +
     title    = "NCAA Men's Tournament Efficiency Landscape",
     subtitle = "Teams in the <span style='color:#4CAF50;'>**top-right**</span> have the best offense AND defense — 2025-26 Regular Season",
     x        = "Offensive Efficiency (higher = better) \u2192",
-    y        = "Defensive Efficiency (lower = better) \u2192",
+    y        = "Defensive Efficiency (lower = better) \u2192 ",
     #caption  = "Data via hoopR"
   ) +
   theme_classic() +
