@@ -9,7 +9,7 @@ you can see at a glance which slices are actually above the bar.
 Percentiles are minutes-weighted, and all rates are per 40 minutes (college
 standard).
 
-![Example](outputs/pizza_plot_MiLaysia_Fulwiley_reader_friendly.png)
+![Example](outputs/pizza_plot_Mila_Holloway_big_ten_2026.png)
 
 ## Scripts
 
@@ -23,11 +23,11 @@ standard).
 Edit the `CONFIG` block near the top:
 
 ```r
-main_player     <- "Jamisyn Heaton"            # player to feature
-school          <- "Utah State"                # her school
-conference_name <- "Mountain West Conference"  # comparison pool, partial match OK
-season          <- 2026                        # END year: 2026 = 2025-26
-headshot_local  <- ""                          # optional; falls back to ESPN's CDN
+main_player     <- "Mila Holloway"           # player to feature
+school          <- "University of Michigan"  # her school
+conference_name <- "Big Ten"                 # comparison pool, partial match OK
+season          <- 2026                      # END year: 2026 = 2025-26
+headshot_local  <- ""                        # optional; falls back to ESPN's CDN
 ```
 
 Run `get_wbb_conferences()` (defined in the script) to print every conference
@@ -60,7 +60,7 @@ without a headshot if none is found.
 The conference pools behind the example charts, one row per player with raw
 per-40 rates and the weighted percentiles the slices are drawn from:
 
-- `data/wbb_mountain_west_2026.csv` — from the standard script
+- `data/wbb_big_ten_2026.csv` — from the standard script
 - `data/wbb_pac_12_2026.csv` — from the Pac-12 variant
 
 ## Output

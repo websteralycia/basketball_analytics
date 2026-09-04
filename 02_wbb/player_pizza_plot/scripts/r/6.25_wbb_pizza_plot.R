@@ -41,10 +41,14 @@ library(jsonlite)
 # CONFIG: edit these to change the plot
 ###############################################
 
-main_player     <- "Jamisyn Heaton"               #"Mila Holloway"             # player to feature, can be swapped 
-school          <- "Utah State"                   #"University of Michigan"     # the player's school
-conference_name <- "Mountain West Conference"     #"Big Ten"                    # comparison pool (partial match OK)
-season          <- 2026                                                        # wehoop uses END year (2026 = 2025-26)
+main_player     <- "Mila Holloway"            # player to feature
+school          <- "University of Michigan"   # the player's school
+conference_name <- "Big Ten"                  # comparison pool (partial match OK)
+season          <- 2026                       # wehoop uses END year (2026 = 2025-26)
+
+# Another worked example, if you want to see a smaller conference:
+#   main_player <- "Jamisyn Heaton"; school <- "Utah State"
+#   conference_name <- "Mountain West Conference"
 
 # Optional local headshot. If "", the script tries the ESPN
 # CDN and silently skips the image when none is found.
@@ -618,6 +622,16 @@ key_metrics_avg_pctile <- c(
   "ft_pos_avg_pctile"
 )
 
+# --- 8.1b Label geometry ---
+# Radius the metric name and percentile badge are anchored at. Bars run 0-1,
+# so this is the clearance above a 100th-percentile slice. The badge hangs
+# inward from it, which is what a high slice collides with if this is too low.
+# PLOT_MAX is the panel's radial extent and sets how big the wheel is drawn --
+# labels can sit outside it because coord_polar runs with clip = "off", so
+# push LABEL_RADIUS out without touching PLOT_MAX or the wheel shrinks.
+LABEL_RADIUS <- 1.28
+PLOT_MAX     <- 1.35
+
 # --- 8.2 Theme colors ---
 BACKGROUND_COLOR <- "#1a1a1a"
 LINE_COLOR       <- "#0033A0"  # Utah State blue outline; change per school
@@ -684,15 +698,15 @@ pizza_plot_dark <- ggplot(
 
   # Metric name label
   geom_text(
-    aes(y = 1.20, label = Metric),
+    aes(y = LABEL_RADIUS, label = Metric),
     vjust = -0.5,
     color = LETTER_COLOR, size = 4, fontface = "bold"
   ) +
 
   # Percentile badge
   geom_label(
-    aes(y = 1.20, label = sprintf("%.0f%%", Percentile * 100)),
-    vjust = 1.5,
+    aes(y = LABEL_RADIUS, label = sprintf("%.0f%%", Percentile * 100)),
+    vjust = 1.35,
     color = LETTER_COLOR, size = 3.5, fontface = "bold",
     label.r = unit(0.3, "lines"),
     label.padding = unit(0.2, "lines"),
@@ -704,7 +718,7 @@ pizza_plot_dark <- ggplot(
              color = LETTER_COLOR, linetype = "dashed", linewidth = 0.25) +
 
   coord_polar(clip = "off") +
-  scale_y_continuous(limits = c(-0.3, 1.35),
+  scale_y_continuous(limits = c(-0.3, PLOT_MAX),
                      breaks = c(0.25, 0.5, 0.75),
                      expand = c(0, 0)) +
   scale_fill_gradient(low = FILL_COLOR, high = FILL_COLOR) +
