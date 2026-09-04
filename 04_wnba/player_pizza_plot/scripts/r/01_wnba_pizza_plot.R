@@ -806,10 +806,12 @@ final_plot <- final_plot +
 
 # --- 8.7 Save ---
 ggsave(
+  # The WNBA season runs inside one calendar year, so the file is stamped with
+  # that single year -- taken from the data rather than hardcoded.
   filename = file.path(output_dir, paste0(
     "pizza_plot_",
     gsub(" ", "_", main_player),
-    "_2025-26.png"
+    "_", season_yr, ".png"
   )),
   plot   = final_plot,
   width  = 8,

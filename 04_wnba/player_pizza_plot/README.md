@@ -4,7 +4,7 @@ The WNBA version of the pizza plot: one player, eight metrics, each slice
 scaled to her percentile against the rest of the league within her position
 group. A reference ring marks the position-group average.
 
-![Example](outputs/pizza_plot_Olivia_Miles_2025-26.png)
+![Example](outputs/pizza_plot_Olivia_Miles_2026.png)
 
 ## Configuring
 
@@ -83,8 +83,9 @@ table above is a superset of it.
 
 ## Output
 
-A PNG at 8×8in, 300dpi, named `pizza_plot_<player>_2025-26.png`, plus the two
-CSVs.
+A PNG at 8×8in, 300dpi, named `pizza_plot_<player>_<season>.png`, plus the two
+CSVs. The WNBA season runs inside a single calendar year, so the stamp is one
+year (`2026`), not a split `2025-26` — and it's read off the data, not typed in.
 
 ## Label spacing
 
