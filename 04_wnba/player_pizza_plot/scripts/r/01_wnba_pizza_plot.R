@@ -75,13 +75,14 @@ player_team <- "Minnesota Lynx"
 
 # What to print after the team name in the title. This is derived from the data
 # that actually went into the chart, so it can't go stale as the season runs on.
+#   "date"   -> "Aug 30, 2026"                      (default; keeps the title short)
 #   "games"  -> "39 Games"
-#   "asof"   -> "As of Sep 3, 2026"
-#   "both"   -> "39 Games | Through Sep 3, 2026"
+#   "asof"   -> "As of Aug 30, 2026"
+#   "both"   -> "39 Games | Through Aug 30, 2026"
 #   "season" -> "2026 Season"
 # Set PERIOD_TEXT to a string of your own to override it entirely, e.g.
 # PERIOD_TEXT <- "First 10 Games" if you deliberately want a fixed window.
-PERIOD_LABEL <- "both"
+PERIOD_LABEL <- "date"
 PERIOD_TEXT  <- NULL
 
 ###############################################
@@ -462,13 +463,14 @@ period_text <- if (!is.null(PERIOD_TEXT)) {
   PERIOD_TEXT
 } else {
   switch(PERIOD_LABEL,
+    date   = format(last_date, "%b %e, %Y"),
     games  = paste0(n_games, " Game", if (n_games == 1) "" else "s"),
     asof   = paste0("As of ", format(last_date, "%b %e, %Y")),
     season = paste0(season_yr, " Season"),
     both   = paste0(n_games, " Game", if (n_games == 1) "" else "s",
                     " | Through ", format(last_date, "%b %e, %Y")),
-    stop("PERIOD_LABEL must be one of \"games\", \"asof\", \"both\", \"season\".",
-         call. = FALSE)
+    stop("PERIOD_LABEL must be one of \"date\", \"games\", \"asof\", ",
+         "\"both\" or \"season\".", call. = FALSE)
   )
 }
 period_text <- gsub("  +", " ", period_text)   # format(%e) pads single digits

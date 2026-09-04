@@ -14,7 +14,7 @@ Near the top of `scripts/r/01_wnba_pizza_plot.R`:
 main_player  <- "Olivia Miles"
 player_team  <- "Minnesota Lynx"
 
-PERIOD_LABEL <- "both"    # what the title says about scope
+PERIOD_LABEL <- "date"    # what the title says about scope
 PERIOD_TEXT  <- NULL      # or override it with a string of your own
 ```
 
@@ -29,10 +29,14 @@ can't go stale as the season runs on:
 
 | Value | Title reads |
 |---|---|
+| `"date"` (default) | `Aug 30, 2026` |
 | `"games"` | `39 Games` |
 | `"asof"` | `As of Aug 30, 2026` |
-| `"both"` (default) | `39 Games \| Through Aug 30, 2026` |
+| `"both"` | `39 Games \| Through Aug 30, 2026` |
 | `"season"` | `2026 Season` |
+
+`"date"` is the default because the title sits on one line with the player and
+team; the longer forms crowd it.
 
 Set `PERIOD_TEXT` to any string to override it — use that if you deliberately
 want a fixed window, e.g. `PERIOD_TEXT <- "First 10 Games"`.
