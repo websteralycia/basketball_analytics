@@ -49,6 +49,12 @@ and centred on the crosshairs, so the quadrants stay comparable.
 install.packages(c("wehoop", "dplyr", "readr", "ggplot2", "ggimage", "ggtext"))
 ```
 
+## Data
+
+`data/ncaa_wbb_efficiency_2026.csv` is what the grabber produced for the example
+chart — one row per team with totals, possessions, ORtg, DRtg and Net Rating.
+Committed so you can check the numbers without running the pull.
+
 ## Output
 
 A PNG at 10×7in, 300dpi, transparent background.

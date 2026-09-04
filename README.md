@@ -1,7 +1,7 @@
 # basketball_analytics
 
 Basketball analytics scripts and finished charts, across men's and women's
-college basketball, the NBA, the WNBA and Unrivaled.
+college basketball, the NBA and the WNBA.
 
 Everything here is built to be run by someone else. Each script has a marked
 `CONFIG` block near the top with the handful of things you'd actually want to
@@ -18,7 +18,6 @@ change — team, player, conference, season — and sensible defaults for the re
 | [`03_nba/player_pizza_plot`](03_nba/player_pizza_plot) | NBA player percentile radar against the league, within position |
 | [`04_wnba/team_efficiency`](04_wnba/team_efficiency) | WNBA efficiency landscape, with a live top-up for games the data release hasn't picked up yet |
 | [`04_wnba/player_pizza_plot`](04_wnba/player_pizza_plot) | WNBA player percentile radar |
-| [`05_unrivaled/team_efficiency`](05_unrivaled/team_efficiency) | Unrivaled efficiency landscape, fed by a Python pull from the SportRadar API |
 
 ## What the two chart types are
 
@@ -36,10 +35,12 @@ reference ring marks the position-group average.
 
 ## Running a script
 
-**You do not need to download any data.** With one exception (Unrivaled, which
-needs a free SportRadar API key), the scripts pull live from
+**You do not need to download any data.** The scripts pull live from
 [`wehoop`](https://wehoop.sportsdataverse.org/) and
 [`hoopR`](https://hoopr.sportsdataverse.org/), so a fresh clone runs end to end.
+
+Each project also ships the CSV its scripts generate, under `data/`, so you can
+look at the numbers behind a chart without running anything.
 
 ### 1. Install R (once)
 
@@ -105,12 +106,13 @@ Desktop. R reads `~/.Renviron` only at startup, so restart R after editing it.
 
 ```
 <league>/<project>/
-├── scripts/r/       # the R scripts
-├── scripts/python/  # Python, where a project uses it
-└── outputs/         # example rendered charts
+├── scripts/r/   # the R scripts
+├── data/        # the CSV the scripts generate
+└── outputs/     # example rendered charts
 ```
 
 Leagues keep the same numbered prefixes throughout: `01_mbb`, `02_wbb`,
-`03_nba`, `04_wnba`, `05_unrivaled`, `06_nfl`.
+`03_nba`, `04_wnba`.
 
-Data is not committed — scripts and example outputs only.
+Only the small generated CSVs are committed. Raw pulls — play-by-play,
+full player-box seasons — stay local.

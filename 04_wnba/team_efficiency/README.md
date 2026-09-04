@@ -45,7 +45,17 @@ install.packages(c("wehoop", "nbaplotR", "dplyr", "tibble", "readr",
                    "ggplot2", "ggimage", "ggtext"))
 ```
 
+## Data
+
+`data/WNBA_Efficiency_AUG_2026_fullseason.csv` is the season efficiency table
+behind the example chart. Committed so you can check the numbers without
+running the pull.
+
 ## Output
 
-Four PNGs plus the season efficiency CSV. The landscape PNG renders at
-dpi 1200 — drop it to 300 in section 6 if you want smaller files.
+The script writes four PNGs — landscape and a 4:5 Instagram crop, each opaque
+and transparent — plus the season efficiency CSV. Only the landscape PNG is
+checked in here as an example.
+
+The landscape PNG renders at dpi 1200; drop it to 300 in section 6 if you want
+smaller files.

@@ -1,0 +1,16 @@
+team_id,team_short_display_name,total_pts_scored,total_pts_allowed,total_fga,total_fta,total_tov,total_oreb,possessions,ortg,drtg,net_rtg,logo
+3,Wings,3463,3343,2773,708,428,334,3178.52,108.95,105.175,3.775,https://a.espncdn.com/i/teamlogos/wnba/500/dal.png
+5,Fever,3769,3547,2710,873,524,305,3313.12,113.76,107.059,6.701,https://a.espncdn.com/i/teamlogos/wnba/500/ind.png
+6,Sparks,3316,3516,2589,759,555,287,3190.96,103.919,110.186,-6.268,https://a.espncdn.com/i/teamlogos/wnba/500/la.png
+8,Lynx,3571,3248,2750,678,486,364,3170.32,112.638,102.45,10.188,https://a.espncdn.com/i/teamlogos/wnba/500/min.png
+9,Liberty,3601,3493,2688,839,543,330,3270.16,110.117,106.814,3.303,https://a.espncdn.com/i/teamlogos/wnba/500/ny.png
+11,Mercury,3266,3421,2546,902,511,266,3187.88,102.451,107.313,-4.862,https://a.espncdn.com/i/teamlogos/wnba/500/phx.png
+14,Storm,3240,3438,2706,738,547,331,3246.72,99.793,105.891,-6.098,https://a.espncdn.com/i/teamlogos/wnba/500/sea.png
+16,Mystics,3231,3233,2541,979,585,404,3152.76,102.482,102.545,-0.063,https://a.espncdn.com/i/teamlogos/wnba/500/wsh.png
+17,Aces,3616,3481,2735,800,480,310,3257,111.022,106.877,4.145,https://a.espncdn.com/i/teamlogos/wnba/500/lv.png
+18,Sun,2996,3303,2596,817,519,351,3123.48,95.919,105.747,-9.829,https://a.espncdn.com/i/teamlogos/wnba/500/conn.png
+19,Sky,3401,3502,2725,906,494,314,3303.64,102.947,106.004,-3.057,https://a.espncdn.com/i/teamlogos/wnba/500/chi.png
+20,Dream,3460,3246,2713,941,488,413,3202.04,108.056,101.373,6.683,https://a.espncdn.com/i/teamlogos/wnba/500/atl.png
+129689,Valkyries,3219,2948,2659,710,402,355,3018.4,106.646,97.668,8.978,https://a.espncdn.com/i/teamlogos/wnba/500/gs.png
+131935,Tempo,3307,3557,2583,798,526,323,3137.12,105.415,113.384,-7.969,https://a.espncdn.com/i/teamlogos/wnba/500/tor.png
+132052,Fire,3293,3473,2600,697,537,302,3141.68,104.817,110.546,-5.729,https://a.espncdn.com/i/teamlogos/wnba/500/por.png

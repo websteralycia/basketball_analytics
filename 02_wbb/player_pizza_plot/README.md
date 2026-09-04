@@ -55,6 +55,14 @@ install.packages(c("wehoop", "dplyr", "readr", "ggplot2", "tidyr",
 `magick` is what composites the headshot onto the plot; the chart still renders
 without a headshot if none is found.
 
+## Data
+
+The conference pools behind the example charts, one row per player with raw
+per-40 rates and the weighted percentiles the slices are drawn from:
+
+- `data/wbb_mountain_west_2026.csv` — from the standard script
+- `data/wbb_pac_12_2026_lab.csv` — from the Pac-12 variant
+
 ## Output
 
 A PNG at 8×8in, 300dpi, named

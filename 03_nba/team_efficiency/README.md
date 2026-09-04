@@ -67,7 +67,14 @@ install.packages(c("hoopR", "nbaplotR", "dplyr", "readr", "ggplot2",
                    "ggtext", "rlang"))
 ```
 
+## Data
+
+`data/NBA_Efficiency_2025_26.csv` is the season efficiency table behind the
+example chart — one row per team. Committed so you can check the numbers
+without running the pull.
+
 ## Output
 
-Four PNGs — landscape 10×7in and a 4:5 Instagram crop, each opaque and
-transparent — plus the season efficiency CSV.
+The script writes four PNGs — landscape 10×7in and a 4:5 Instagram crop, each
+opaque and transparent — plus the season efficiency CSV. Only the landscape
+PNG is checked in here as an example.

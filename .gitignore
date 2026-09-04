@@ -6,9 +6,12 @@
 *secret*
 *token*
 
-# --- Data stays local (this repo is scripts + outputs only) ---
-data/
+# --- Data ---
+# Committed: the CSVs each project's scripts generate, so you can look at the
+# numbers behind a chart, or run a plot script without waiting on a data pull.
+# Everything else stays local -- no raw play-by-play, no spreadsheets.
 *.csv
+!*/*/data/*.csv
 *.xlsx
 *.xls
 *.parquet
