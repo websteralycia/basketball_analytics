@@ -137,14 +137,13 @@ print(
 # 7. Save to CSV
 ###############################################
 
-# Where the CSV lands.
-#   Default (nothing to set up): your Desktop.
-#   Optional: set BBALL_HOME in ~/.Renviron to an analytics folder and the file
-#   routes to <BBALL_HOME>/<league>/data/ instead.
-league     <- "01_mbb"   # league folder this script belongs to
-bball_home <- Sys.getenv("BBALL_HOME", unset = "")
-data_dir   <- if (nzchar(bball_home)) file.path(bball_home, league, "data") else "~/Desktop"
-dir.create(data_dir, recursive = TRUE, showWarnings = FALSE)
+# Where everything this script writes is saved -- the chart and the CSV.
+# Change this one line to send them somewhere else, e.g. "~/Documents/scouting".
+save_dir <- "~/Desktop"
+dir.create(save_dir, recursive = TRUE, showWarnings = FALSE)
+
+output_dir <- save_dir   # charts
+data_dir   <- save_dir   # CSVs
 
 out_csv <- file.path(data_dir, "ncaa_mbb_efficiency_2026.csv")
 write_csv(team_efficiency_2026, out_csv)

@@ -72,14 +72,14 @@ install.packages(c("wehoop", "dplyr", "readr", "ggplot2", "tidyr",
 
 ## Data
 
-`data/wnba_player_season_2026_full.csv` is the league pool behind the example
+`data/wnba_player_season_2026.csv` is the league pool behind the example
 chart — one row per player with every computed column: totals, per-36 rates,
 the advanced metrics, and the within-position weighted percentiles the slices
 are drawn from.
 
-The script also writes a trimmed `_lab` version alongside it, which is the same
-rows with fewer columns. That one isn't committed — the full table is a
-superset of it.
+The script also writes a trimmed `wnba_player_season_2026_lab.csv` alongside
+it — the same rows with fewer columns. That one isn't committed, since the
+table above is a superset of it.
 
 ## Output
 

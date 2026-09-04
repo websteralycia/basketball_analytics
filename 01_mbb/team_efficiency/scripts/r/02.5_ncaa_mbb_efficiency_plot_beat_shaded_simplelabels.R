@@ -20,16 +20,13 @@ library(ggtext)
 # 1. Load Data from CSV
 ###############################################
 
-# Where the input CSV is read from and where the PNG lands.
-#   Default (nothing to set up): your Desktop -- the same place the stat
-#   grabber wrote its CSV, so the two scripts line up with no configuration.
-#   Optional: set BBALL_HOME in ~/.Renviron to an analytics folder and these
-#   route to <BBALL_HOME>/<league>/data|outputs/ instead.
-league     <- "01_mbb"   # league folder this script belongs to
-bball_home <- Sys.getenv("BBALL_HOME", unset = "")
-data_dir   <- if (nzchar(bball_home)) file.path(bball_home, league, "data")    else "~/Desktop"
-output_dir <- if (nzchar(bball_home)) file.path(bball_home, league, "outputs") else "~/Desktop"
-dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
+# Where everything this script writes is saved -- the chart and the CSV.
+# Change this one line to send them somewhere else, e.g. "~/Documents/scouting".
+save_dir <- "~/Desktop"
+dir.create(save_dir, recursive = TRUE, showWarnings = FALSE)
+
+output_dir <- save_dir   # charts
+data_dir   <- save_dir   # CSVs
 
 team_efficiency <- read_csv(file.path(data_dir, "ncaa_mbb_efficiency_2026.csv"))
 

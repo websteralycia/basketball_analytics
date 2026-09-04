@@ -89,18 +89,18 @@ minute or two while the season's box scores download.
 
 **It saves to your Desktop.** Nothing to configure.
 
-## Optional: send charts somewhere else
+## Saving somewhere other than the Desktop
 
-To route output into a folder structure instead of the Desktop, set `BBALL_HOME`
-in `~/.Renviron`:
+Every script has one line near where it saves:
 
+```r
+save_dir <- "~/Desktop"
 ```
-BBALL_HOME=/path/to/your/analytics/folder
-```
 
-Charts then save to `<BBALL_HOME>/<league>/outputs/` and intermediate CSVs to
-`<BBALL_HOME>/<league>/data/`. Leave it unset and everything lands on the
-Desktop. R reads `~/.Renviron` only at startup, so restart R after editing it.
+Change it to any folder you like — `"~/Documents/scouting"`, a shared drive,
+wherever. The chart and the CSV both go there, and the folder is created if it
+doesn't exist. That's the whole mechanism; there's nothing to install or
+configure.
 
 ## Layout
 
