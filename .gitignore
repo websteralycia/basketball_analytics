@@ -13,6 +13,10 @@
 *.csv
 !*/*/data/*.csv
 *.xlsx
+# ...except a project's own finished workbook, which is a deliverable in its
+# own right rather than an intermediate: the D3 dataset's whole point is the
+# conditional formatting, and a .csv cannot carry it.
+!*/*/outputs/*.xlsx
 *.xls
 *.parquet
 *.rds

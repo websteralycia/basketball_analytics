@@ -15,6 +15,7 @@ change — team, player, conference, season — and sensible defaults for the re
 | [`02_wbb/team_efficiency`](02_wbb/team_efficiency) | Same chart for NCAA women's basketball |
 | [`02_wbb/win_probability`](02_wbb/win_probability) | Live win probability calculator for NCAA women's basketball — [open it](https://lineup-optimizer-wnba.shinyapps.io/ncaaw-win-probability/) |
 | [`02_wbb/team_four_factors`](02_wbb/team_four_factors) | One NCAA women's team against every team in its conference on the Four Factors, offense and defense |
+| [`02_wbb/d3_player_dataset`](02_wbb/d3_player_dataset) | Season dataset for NCAA Division III women's basketball, scraped from stats.ncaa.org, with a conditionally-formatted Excel workbook |
 | [`02_wbb/player_pizza_plot`](02_wbb/player_pizza_plot) | Eight-slice percentile radar for one NCAA women's player against her conference, within her position group |
 | [`03_nba/team_efficiency`](03_nba/team_efficiency) | NBA efficiency landscape for all 30 teams, plus a 4:5 Instagram crop and transparent variants |
 | [`03_nba/player_pizza_plot`](03_nba/player_pizza_plot) | NBA player percentile radar against the league, within position |
