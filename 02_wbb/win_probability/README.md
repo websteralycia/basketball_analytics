@@ -69,6 +69,31 @@ elapsed time per branch. That's a separate tool, and half of it would mislead.
 that's simultaneously an output of the team pickers and an input to the model
 reads as neither.
 
+## A note on the possession estimate
+
+The team ratings this model is built on (`03_team_ratings.R`) use the simple
+box-score possession estimate:
+
+```
+FGA + 0.44*FTA + TOV - OREB
+```
+
+The other efficiency projects in this repo have since moved to Oliver's
+estimate with the team-rebound adjustment, which reproduces NBA.com's published
+ratings to within 0.06 where the simple version reads about 2 points low on
+both ends — see
+[`03_nba/team_efficiency`](../../03_nba/team_efficiency#the-possession-estimate-and-why-it-matters)
+for that measurement.
+
+This project has **not** been switched, deliberately. These ratings aren't
+reported to anyone — they're an input the win probability model was fitted on,
+so changing the estimator means refitting the model and redeploying, not just
+editing a formula. And the change would largely wash out here anyway: the bias
+hits both ends of a rating equally, and what feeds the model is the *difference*
+between two teams' ratings.
+
+Worth doing for consistency; not worth doing casually.
+
 ## Honest limits
 
 - Under 5 seconds left it's barely better than "whoever leads wins", and the
