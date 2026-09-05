@@ -105,6 +105,13 @@ wherever. The chart and the CSV both go there, and the folder is created if it
 doesn't exist. That's the whole mechanism; there's nothing to install or
 configure.
 
+## Use
+
+Copyright 2026 Alycia Webster. All rights reserved — see [LICENSE](LICENSE).
+
+Shared for viewing and discussion. The absence of an open-source license is
+deliberate rather than an oversight; if you'd like to use any of it, just ask.
+
 ## Layout
 
 ```
