@@ -31,8 +31,13 @@ fit = -72.89 + 144.51*eFG - 93.57*TOV + 47.20*OREB + 18.80*FTr
 ```
 
 OREB and FT rate carry positive weight because that is what the league data
-says. The engine was built to find lineups that shored up one roster's
-offensive rebounding, and those weights are why it surfaces them.
+says.
+
+**Why it was built.** For the New York Liberty, who were weak on the
+offensive glass. The engine finds lineups that shore that up: the positive
+OREB and FT-rate weights are what make it surface them. The weights are
+league-wide rather than fitted to the Liberty; the roster problem is what the
+engine was pointed at.
 
 **Usage-stress diminishing returns.** Total lineup usage is not free: as it
 rises, each player's efficiency is discounted and turnovers inflated.

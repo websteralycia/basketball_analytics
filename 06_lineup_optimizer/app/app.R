@@ -373,7 +373,7 @@ ui <- fluidPage(
                  " The four-factor weights were fitted league-wide on team-game data, then applied here to usage-weighted averages of individual player rates. Those are different quantities, so the scale sits about 9 points low: league-average inputs return -9.18 rather than 0."),
           tags$p("The offset is constant, so the ordering of lineups is unaffected, which is what the tool is for. Compare lineups to each other, not to zero."),
           tags$h4("Where the weights came from"),
-          tags$p("A regression of net rating on the four factors across five WNBA seasons. OREB and FT rate carry positive weight, which is what the league data says; the engine was built to find lineups that shored up a specific roster\'s offensive rebounding.")
+          tags$p("A regression of net rating on the four factors across five WNBA seasons. OREB and FT rate carry positive weight, which is what the league data says. The engine was built for the New York Liberty, who were weak on the offensive glass, so it surfaces lineups that shore that up. The weights are league-wide, not fitted to the Liberty.")
         ))
       )
     )
