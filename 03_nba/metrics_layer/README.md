@@ -1,7 +1,7 @@
 # NBA Metrics Layer
 
 The metric code the NBA charts are built on, with its tests and two runnable
-tours. **Source-agnostic**: it works the same whether the numbers came from
+tours. **Source-agnostic**, it works the same whether the numbers came from
 `hoopR`, a CSV someone handed you, or a fixture.
 
 ## Start here if you have a CSV
