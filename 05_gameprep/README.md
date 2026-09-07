@@ -20,7 +20,7 @@ downloads one file out of this.
 ## Running it
 
 ```sh
-Rscript -e 'shiny::runApp("11_gameprep/consumers/dashboard")'
+Rscript -e 'shiny::runApp("05_gameprep/consumers/dashboard")'
 ```
 
 Pick a league, a population, and two teams. The card builds from cached
@@ -82,8 +82,8 @@ the WNBA. NCAA men's halves are the outlier. **Every league difference lives in
 The dropdowns list whatever is cached. To add one:
 
 ```sh
-Rscript 11_gameprep/scripts/build_profile.R wnba 2026
-Rscript 11_gameprep/scripts/build_profile.R wbb 2026 "Big East"
+Rscript 05_gameprep/scripts/build_profile.R wnba 2026
+Rscript 05_gameprep/scripts/build_profile.R wbb 2026 "Big East"
 ```
 
 It pulls a full season of play-by-play, so it takes minutes: WNBA about 30
@@ -99,8 +99,8 @@ this repo consumes. Rebuild them with `get_lineup_stints()` if you need them.
 ## Tests
 
 ```sh
-Rscript -e 'library(testthat); source("11_gameprep/source_all.R");
-            test_dir("11_gameprep/tests/testthat")'
+Rscript -e 'library(testthat); source("05_gameprep/source_all.R");
+            test_dir("05_gameprep/tests/testthat")'
 ```
 
 556 assertions. Many are reconciliation rather than unit tests: points must

@@ -15,11 +15,11 @@
 # gameprep caches its play profiles a level deeper, and they are what the
 # dashboard reads. The 828 per-game files under data/tidy/<league>/games/
 # stay out: 9MB of intermediates nothing in the repo consumes.
-!11_gameprep/data/tidy/*/profiles/*.csv
+!05_gameprep/data/tidy/*/profiles/*.csv
 # The card's phrase and label tables are configuration, not data. Every
 # coaching point on a card comes from tactical_phrases.csv, so a clone
 # without these renders no bullets at all.
-!11_gameprep/consumers/gameprep_cards/config/*.csv
+!05_gameprep/consumers/gameprep_cards/config/*.csv
 *.xlsx
 # ...except a project's own finished workbook, which is a deliverable in its
 # own right rather than an intermediate: the D3 dataset's whole point is the
