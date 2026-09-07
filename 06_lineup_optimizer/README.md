@@ -4,9 +4,13 @@ Pick two to four core players, the engine completes the five under position
 constraints and ranks the best fits, with an explanation of why each added
 player showed up.
 
+### ▶ [Open the optimizer](https://lineup-optimizer-wnba.shinyapps.io/lineup-optimizer-contract-type-deployment/)
+
+No install, no R, nothing to download.
+
 ![The optimizer](outputs/lineup_optimizer.png)
 
-## Running it
+## Running it locally
 
 ```sh
 Rscript -e 'shiny::runApp("06_lineup_optimizer/app")'
