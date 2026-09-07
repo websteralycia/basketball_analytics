@@ -1,6 +1,6 @@
 # WNBA Lineup Optimizer
 
-Pick two to four core players; the engine completes the five under position
+Pick two to four core players, the engine completes the five under position
 constraints and ranks the best fits, with an explanation of why each added
 player showed up.
 
