@@ -17,7 +17,7 @@ Logos are pulled from ESPN, so the chart is readable without a legend.
 | `scripts/r/02_ncaa_mbb_efficiency_stat_grabber.R` | Pulls the season's team box scores from `hoopR`, pairs each team with its opponent per game, aggregates to season totals, and computes ORtg / DRtg / Net Rating. Writes a CSV. |
 | `scripts/r/02.5_ncaa_mbb_efficiency_plot_beat_shaded_simplelabels.R` | Reads that CSV and draws the chart. |
 
-Run the grabber first. Both save to your Desktop, so they line up with no
+Be sure to run the grabber first. Both save to your Desktop, so they line up with no
 configuration. To send them elsewhere, change `save_dir` in each, see the root
 README.
 
