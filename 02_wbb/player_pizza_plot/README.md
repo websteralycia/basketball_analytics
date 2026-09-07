@@ -39,7 +39,7 @@ Note the featured player has to clear the threshold too.
 
 ## The eight slices
 
-Grouped scoring / shooting / playmaking, so related metrics sit next to each
+Related metrics sit next to each
 other rather than being scattered around the circle. Change the set in section
 8.1 (`key_metrics_pctile`), the labels, grouping colors and reference ring all
 follow from that vector.
