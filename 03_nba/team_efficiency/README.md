@@ -3,7 +3,7 @@
 All 30 teams plotted by offensive rating against defensive rating, crosshairs
 at the league average, logos instead of points. Top-right is good at both ends.
 
-Written to be re-pointable: it pulls from `hoopR` by default, but will take a
+Written to be re-pointable, it pulls from `hoopR` by default, but will take a
 CSV of team-game rows instead, so the same chart can be built from a scrape,
 a vendor export, or anything else with the right columns.
 
