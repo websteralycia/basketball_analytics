@@ -1,7 +1,7 @@
 # NBA Player Pizza Plot
 
 One player, eight metrics, each slice scaled to his percentile against the
-league within his position group. A reference ring marks the position-group
+league within his position group. Reference ring marks the position-group
 average.
 
 Same re-pointable design as the team chart: `hoopR` by default, or your own
