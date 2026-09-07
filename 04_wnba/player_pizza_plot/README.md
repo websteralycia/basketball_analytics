@@ -77,10 +77,6 @@ chart, one row per player with every computed column: totals, per-36 rates,
 the advanced metrics, and the within-position weighted percentiles the slices
 are drawn from.
 
-The script also writes a trimmed `wnba_player_season_2026_lab.csv` alongside
-it, the same rows with fewer columns. That one isn't committed, since the
-table above is a superset of it.
-
 ## Output
 
 A PNG at 8×8in, 300dpi, named `pizza_plot_<player>_<season>.png`, plus the two
