@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MICH vs IOWA &mdash; pregame</title>
+</head>
+<body>
+<style>
+.gp-card{color-scheme:light;
+  --surface-1:#fcfcfb; --surface-2:#f9f9f7;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#898781;
+  --border:rgba(11,11,11,0.10); --track:#f0efec;
+  --pole-attack:#86c98a; --pole-threat:#e34948;
+  background:var(--surface-1); color:var(--text-primary);
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  max-width:640px; padding:1.5rem; border-radius:12px;
+  border:0.5px solid var(--border); line-height:1.45;}
+@media (prefers-color-scheme:dark){:root:where(:not([data-theme="light"])) .gp-card{
+  color-scheme:dark;
+  --surface-1:#1a1a19; --surface-2:#0d0d0d;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#898781;
+  --border:rgba(255,255,255,0.10); --track:#383835;
+  --pole-attack:#9ad9a0; --pole-threat:#e66767;}}
+:root[data-theme="dark"] .gp-card{color-scheme:dark;
+  --surface-1:#1a1a19; --surface-2:#0d0d0d;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#898781;
+  --border:rgba(255,255,255,0.10); --track:#383835;
+  --pole-attack:#9ad9a0; --pole-threat:#e66767;}
+.gp-card *{box-sizing:border-box;}
+.gp-eyebrow{display:flex;justify-content:space-between;gap:1rem;
+  font-size:13px;color:var(--text-muted);margin:0 0 4px;}
+.gp-title{margin:0 0 2px;font-size:22px;font-weight:600;letter-spacing:-0.01em;}
+.gp-pop{margin:0 0 0.75rem;font-size:12px;color:var(--text-muted);}
+.gp-legend{display:flex;align-items:center;gap:8px;margin:0 0 1.25rem;}
+.gp-legend-l{font-size:11px;color:var(--text-secondary);white-space:nowrap;}
+.gp-legend-track{position:relative;width:120px;height:8px;border-radius:4px;
+  --lg-c:var(--lg-l);background:var(--lg-c);}
+@media (prefers-color-scheme:dark){:root:where(:not([data-theme="light"])) .gp-legend-track{
+  --lg-c:var(--lg-d);}}
+:root[data-theme="dark"] .gp-legend-track{--lg-c:var(--lg-d);}
+.gp-legend-cap{margin:-0.9rem 0 1.25rem;font-size:11px;color:var(--text-muted);}
+.gp-facts{display:flex;flex-wrap:wrap;gap:0;margin:0 0 1.5rem;
+  border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);}
+.gp-fact{display:flex;gap:5px;align-items:baseline;padding:9px 10px 9px 0;
+  margin-right:10px;font-size:12px;white-space:nowrap;}
+.gp-fact:not(:last-child){border-right:0.5px solid var(--border);padding-right:10px;}
+.gp-fact-l{color:var(--text-muted);}
+.gp-fact-v{font-size:13px;font-weight:650;font-variant-numeric:tabular-nums;}
+.gp-section{margin:0 0 10px;font-size:13px;font-weight:600;
+  color:var(--text-secondary);}
+.gp-priorities{border-top:0.5px solid var(--border);padding-top:14px;margin:0 0 1.5rem;}
+.gp-priority{display:grid;grid-template-columns:7px minmax(0,1fr);gap:10px;
+  padding:9px 0;border-bottom:0.5px solid var(--border);}
+.gp-priority-mark{width:7px;height:100%;min-height:36px;border-radius:4px;}
+.gp-priority-status{margin:0 0 2px;font-size:10px;font-weight:700;
+  letter-spacing:.06em;color:var(--text-muted);}
+.gp-priority-action{margin:0;font-size:16px;font-weight:700;line-height:1.25;}
+.gp-priority-evidence{margin:3px 0 0;font-size:12px;color:var(--text-secondary);
+  font-variant-numeric:tabular-nums;}
+.gp-identity{margin:0 0 1.5rem;padding:12px 0;border-bottom:0.5px solid var(--border);}
+.gp-identity-copy{margin:0 0 8px;font-size:14px;line-height:1.4;}
+.gp-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.gp-tag{margin:0;padding:2px 7px;border:0.5px solid var(--border);border-radius:4px;
+  font-size:11px;color:var(--text-secondary);font-variant-numeric:tabular-nums;}
+.gp-group{margin:14px 0 6px;font-size:11px;font-weight:600;
+  letter-spacing:0.04em;text-transform:uppercase;color:var(--text-muted);}
+.gp-row{display:grid;grid-template-columns:1fr 132px 74px;gap:12px;
+  align-items:center;padding:5px 0;}
+.gp-name{margin:0;font-size:13px;}
+.gp-meta{margin:0;font-size:11px;color:var(--text-muted);
+  font-variant-numeric:tabular-nums;}
+.gp-track{position:relative;height:8px;background:var(--track);
+  border-radius:4px;}
+.gp-mid{position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;
+  background:var(--border);}
+.gp-fill{position:absolute;top:0;height:8px;--fill-c:var(--fill-l);}
+@media (prefers-color-scheme:dark){:root:where(:not([data-theme="light"])) .gp-fill{
+  --fill-c:var(--fill-d);}}
+:root[data-theme="dark"] .gp-fill{--fill-c:var(--fill-d);}
+.gp-rank{margin:0;font-size:11px;color:var(--text-secondary);
+  text-align:right;font-variant-numeric:tabular-nums;}
+.gp-keys{border-top:0.5px solid var(--border);margin-top:1.25rem;
+  padding-top:14px;}
+.gp-bullet{display:flex;gap:9px;align-items:flex-start;margin-bottom:7px;}
+.gp-dot{flex:0 0 auto;width:7px;height:7px;border-radius:50%;margin-top:6px;}
+.gp-bullet p{margin:0;font-size:12px;color:var(--text-secondary);}
+.gp-none{margin:0;font-size:13px;color:var(--text-muted);font-style:italic;}
+@media (max-width:480px){
+  .gp-card{padding:1rem;}
+  .gp-row{grid-template-columns:minmax(0,1fr) 92px 58px;gap:8px;}
+  .gp-priority-action{font-size:15px;}
+}
+</style>
+<div class="gp-card"><div class="gp-eyebrow"><span>Pregame report</span><span></span></div><h2 class="gp-title">MICH vs IOWA</h2><p class="gp-pop">Opponent ranked within Big Ten &middot; 18 teams</p><div class="gp-facts"><span class="gp-fact"><span class="gp-fact-l">Record</span><span class="gp-fact-v">27-7</span></span><span class="gp-fact"><span class="gp-fact-l">Pace</span><span class="gp-fact-v">72.7</span></span><span class="gp-fact"><span class="gp-fact-l">eFG%</span><span class="gp-fact-v">53.7%</span></span><span class="gp-fact"><span class="gp-fact-l">TOV%</span><span class="gp-fact-v">21.0%</span></span><span class="gp-fact"><span class="gp-fact-l">ORB%</span><span class="gp-fact-v">32.3%</span></span><span class="gp-fact"><span class="gp-fact-l">FT rate</span><span class="gp-fact-v">27.9%</span></span></div><div class="gp-priorities"><p class="gp-section">Tonight&rsquo;s 3 keys</p><div class="gp-priority"><span class="gp-priority-mark" style="background:var(--pole-threat)"></span><div><p class="gp-priority-status">MUST RESPECT</p><p class="gp-priority-action">Wall up early, contest straight up without fouling</p><p class="gp-priority-evidence">At rim is 32% of attempts for IOWA at 1.38 points per attempt, 4th of 18 in the Big Ten</p></div></div><div class="gp-priority"><span class="gp-priority-mark" style="background:var(--pole-attack)"></span><div><p class="gp-priority-status">COACHING POINT</p><p class="gp-priority-action">One shot and out is enough, crash the offensive glass</p><p class="gp-priority-evidence">Second chance is 12% of possessions for IOWA at only 1.08 points per possession, 14th of 18 in the Big Ten</p></div></div><div class="gp-priority"><span class="gp-priority-mark" style="background:var(--pole-threat)"></span><div><p class="gp-priority-status">MUST RESPECT</p><p class="gp-priority-action">Get back on makes and misses alike, no leaking out</p><p class="gp-priority-evidence">Transition is 10% of possessions for IOWA at 1.60 points per possession, 3rd of 18 in the Big Ten</p></div></div></div><div class="gp-identity"><p class="gp-section">Opponent identity</p><p class="gp-identity-copy">Their shot volume begins with at rim.</p><div class="gp-tags"><span class="gp-tag">At rim 32%</span><span class="gp-tag">Above the break 3 25%</span><span class="gp-tag">Paint (non-rim) 19%</span></div></div><p class="gp-section">IOWA &middot; full profile</p><p class="gp-group">Ball security &middot; share of possessions</p><div class="gp-row"><div><p class="gp-name">Dead-ball turnovers</p><p class="gp-meta">9% of possessions</p></div><div class="gp-track"><div class="gp-mid"></div><div class="gp-fill" style="--fill-l:#d68244;--fill-d:#df8f59;left:50%;width:21.0%;border-radius:0 4px 4px 0;background:var(--fill-c);"></div></div><p class="gp-rank">6th-fewest</p></div><div class="gp-row"><div><p class="gp-name">Live-ball turnovers</p><p class="gp-meta">11% of possessions</p></div><div class="gp-track"><div class="gp-mid"></div><div class="gp-fill" style="--fill-l:#d8cb76;--fill-d:#e0d68b;right:50%;width:21.0%;border-radius:4px 0 0 4px;background:var(--fill-c);"></div></div><p class="gp-rank">6th-most</p></div><p class="gp-group">Context &middot; PPP = per possession</p><div class="gp-row"><div><p class="gp-name">Transition</p><p class="gp-meta">10% of possessions · 1.60 points per possession</p></div><div class="gp-track"><div class="gp-mid"></div><div class="gp-fill" style="--fill-l:#c95c41;--fill-d:#da6c55;left:50%;width:38.0%;border-radius:0 4px 4px 0;background:var(--fill-c);"></div></div><p class="gp-rank">3rd of 18</p></div><div class="gp-row"><div><p class="gp-name">Second chance</p><p class="gp-meta">12% of possessions · 1.08 points per possession</p></div><div class="gp-track"><div class="gp-mid"></div><div class="gp-fill" style="--fill-l:#d0ce7f;--fill-d:#d9d893;right:50%;width:26.0%;border-radius:4px 0 0 4px;background:var(--fill-c);"></div></div><p class="gp-rank">14th of 18</p></div><p class="gp-group">Shot zone &middot; PPP = per attempt</p><div class="gp-row"><div><p class="gp-name">At rim</p><p class="gp-meta">32% of attempts · 1.38 points per attempt</p></div><div class="gp-track"><div class="gp-mid"></div><div class="gp-fill" style="--fill-l:#ce6942;--fill-d:#dc7956;left:50%;width:32.0%;border-radius:0 4px 4px 0;background:var(--fill-c);"></div></div><p class="gp-rank">4th of 18</p></div><div class="gp-row"><div><p class="gp-name">Above the break 3</p><p class="gp-meta">25% of attempts · 1.04 points per attempt</p></div><div class="gp-track"><div class="gp-mid"></div><div class="gp-fill" style="--fill-l:#ce6942;--fill-d:#dc7956;left:50%;width:32.0%;border-radius:0 4px 4px 0;background:var(--fill-c);"></div></div><p class="gp-rank">4th of 18</p></div><div class="gp-row"><div><p class="gp-name">Paint (non-rim)</p><p class="gp-meta">19% of attempts · 0.92 points per attempt</p></div><div class="gp-track"><div class="gp-mid"></div><div class="gp-fill" style="--fill-l:#d68244;--fill-d:#df8f59;left:50%;width:21.0%;border-radius:0 4px 4px 0;background:var(--fill-c);"></div></div><p class="gp-rank">6th of 18</p></div><div class="gp-row"><div><p class="gp-name">Mid-range</p><p class="gp-meta">17% of attempts · 0.72 points per attempt</p></div><div class="gp-track"><div class="gp-mid"></div><div class="gp-fill" style="--fill-l:#debb65;--fill-d:#e5c67a;right:50%;width:9.0%;border-radius:4px 0 0 4px;background:var(--fill-c);"></div></div><p class="gp-rank">11th of 18</p></div><div class="gp-row"><div><p class="gp-name">Corner 3</p><p class="gp-meta">6% of attempts · 1.05 points per attempt</p></div><div class="gp-track"><div class="gp-mid"></div><div class="gp-fill" style="--fill-l:#d0ce7f;--fill-d:#d9d893;right:50%;width:26.0%;border-radius:4px 0 0 4px;background:var(--fill-c);"></div></div><p class="gp-rank">14th of 18</p></div><div class="gp-keys"><p class="gp-section" style="margin-top:14px;">What they do well</p><div class="gp-bullet"><span class="gp-dot" style="background:var(--pole-threat)"></span><p>At rim · 32% of attempts · 4th of 18</p></div><div class="gp-bullet"><span class="gp-dot" style="background:var(--pole-threat)"></span><p>Transition · 10% of possessions · 3rd of 18</p></div><div class="gp-bullet"><span class="gp-dot" style="background:var(--pole-threat)"></span><p>Above the break 3 · 25% of attempts · 4th of 18</p></div><p class="gp-section" style="margin-top:14px;">Where they struggle</p><div class="gp-bullet"><span class="gp-dot" style="background:var(--pole-attack)"></span><p>Second chance · 12% of possessions · 14th of 18</p></div><div class="gp-bullet"><span class="gp-dot" style="background:var(--pole-attack)"></span><p>Live-ball turnovers · 11% of possessions · the 6th-most in the Big Ten</p></div><div class="gp-bullet"><span class="gp-dot" style="background:var(--pole-attack)"></span><p>Corner 3 · 6% of attempts · 14th of 18</p></div></div></div>
+</body>
+</html>
+

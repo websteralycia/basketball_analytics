@@ -22,6 +22,7 @@ change, team, player, conference, season, and sensible defaults for the rest.
 | [`03_nba/player_pizza_plot`](03_nba/player_pizza_plot) | NBA player percentile radar against the league, within position |
 | [`04_wnba/team_efficiency`](04_wnba/team_efficiency) | WNBA efficiency landscape, with a live top-up for games the data release hasn't picked up yet |
 | [`04_wnba/player_pizza_plot`](04_wnba/player_pizza_plot) | WNBA player percentile radar |
+| [`11_gameprep`](11_gameprep) | Cross-league scouting platform: pregame card, dashboard, and a question-answering agent over the same tidy layer |
 
 ## What the two chart types are
 

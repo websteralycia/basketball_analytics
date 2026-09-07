@@ -1,0 +1,6 @@
+source,dimension,display_label,ppp_definition,unit_noun,caveat,ppp_meaningful
+espn_derived,context,Context,PPP = per possession,possessions,,TRUE
+espn_derived,shot_zone,Shot zone,PPP = per attempt,field-goal attempts,,TRUE
+espn_derived,creation,Creation,PPP = per made FG,made field goals,"Assists are recorded only on made field goals, so this is a share of makes — it cannot be read as a shot-creation rate.",TRUE
+synergy,synergy_play_type,Play type,PPP = per possession,possessions,,TRUE
+espn_derived,ball_security,Ball security,share of possessions,possessions,"A turnover scores zero by definition, so PPP is degenerate here and is not shown. Read these rows as rates.",FALSE

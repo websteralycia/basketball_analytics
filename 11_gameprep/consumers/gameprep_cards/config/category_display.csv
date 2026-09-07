@@ -1,0 +1,25 @@
+source,dimension,category,display_label,bulletable,exclusion_reason
+espn_derived,context,transition,Transition,TRUE,
+espn_derived,context,second_chance,Second chance,TRUE,
+espn_derived,context,halfcourt,Halfcourt,FALSE,"Residual bucket — everything that is not transition or second chance. ~75-80% of possessions by construction, so it describes no tendency."
+espn_derived,shot_zone,at_rim,At rim,TRUE,
+espn_derived,shot_zone,paint,Paint (non-rim),TRUE,
+espn_derived,shot_zone,mid_range,Mid-range,TRUE,
+espn_derived,shot_zone,corner_3,Corner 3,TRUE,
+espn_derived,shot_zone,above_break_3,Above the break 3,TRUE,
+espn_derived,creation,assisted,Assisted,FALSE,"Share of MADE field goals, not a rate. Rises as an offense gets worse — SJSU 2026 is 0th percentile at the rim and in the paint but 91st percentile assisted."
+espn_derived,creation,unassisted,Unassisted,FALSE,"Share of MADE field goals, not a rate. Same artifact as assisted."
+espn_derived,ball_security,live_ball_to,Live-ball turnovers,TRUE,
+espn_derived,ball_security,dead_ball_to,Dead-ball turnovers,TRUE,
+espn_derived,ball_security,no_turnover,Kept the ball,FALSE,"Residual bucket - roughly 80% of possessions by construction, so it describes no tendency."
+synergy,synergy_play_type,transition,Transition,TRUE,
+synergy,synergy_play_type,spot_up,Spot-up,TRUE,
+synergy,synergy_play_type,pnr_ball_handler,P&R ball handler,TRUE,
+synergy,synergy_play_type,pnr_roll_man,P&R roll man,TRUE,
+synergy,synergy_play_type,post_up,Post-up,TRUE,
+synergy,synergy_play_type,isolation,Isolation,TRUE,
+synergy,synergy_play_type,hand_off,Hand-off,TRUE,
+synergy,synergy_play_type,off_screen,Off screen,TRUE,
+synergy,synergy_play_type,cut,Cut,TRUE,
+synergy,synergy_play_type,offensive_rebounds,Offensive rebounds,TRUE,
+synergy,synergy_play_type,miscellaneous,Miscellaneous,FALSE,Residual bucket — no tendency to describe.
