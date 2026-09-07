@@ -20,7 +20,7 @@ has three sheets:
 | **By Column** | Each stat shaded by rank across **all players** in that column |
 | **Key** | What each column means |
 
-The numbers on the two shaded sheets are **identical** — nothing is
+The numbers on the two shaded sheets are **identical**: nothing is
 recomputed. Only the comparison group changes. That's what makes them worth
 putting side by side: a post's rebounding number can be yellow on one sheet
 and deep green on the other, and a guard's 3P% the reverse. It makes the
@@ -52,11 +52,11 @@ Change `MWC_TEAMS` in the runner to point at a different conference.
 ### The scrape needs a real browser
 
 `stats.ncaa.org` sits behind an Akamai bot challenge. Plain `httr`/`rvest`
-gets a 403 or an empty stub — a browser has to execute the challenge and get
+gets a 403 or an empty stub: a browser has to execute the challenge and get
 cookied for the session. So the pull drives Chrome through `chromote`.
 
 It runs **headful**: a Chrome window opens and should be left alone until the
-pull finishes. That's a deliberate workaround, not an oversight — headless
+pull finishes. That's a deliberate workaround, not an oversight: headless
 Chrome crashes on the machine this was written on (macOS 13, Intel), so
 `chromote`'s default launch never opens its debugging port. The script starts
 Chrome normally with `--remote-debugging-port` and attaches instead. The
@@ -68,7 +68,7 @@ a long pull can be resumed rather than restarted.
 ## Data
 
 `data/wbb_player_season_2026_d3_lab.csv` is the trimmed player-season table the
-workbook is built from — the same rows, without the formatting.
+workbook is built from: the same rows, without the formatting.
 
 The raw play-by-play and full-column tables stay local; they're intermediates,
 and the two files here are what you'd actually want to read.

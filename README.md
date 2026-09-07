@@ -5,7 +5,7 @@ college basketball, the NBA and the WNBA.
 
 Everything here is built to be run by someone else. Each script has a marked
 `CONFIG` block near the top with the handful of things you'd actually want to
-change — team, player, conference, season — and sensible defaults for the rest.
+change, team, player, conference, season, and sensible defaults for the rest.
 
 ## Projects
 
@@ -13,7 +13,7 @@ change — team, player, conference, season — and sensible defaults for the re
 |---|---|
 | [`01_mbb/team_efficiency`](01_mbb/team_efficiency) | NCAA men's offensive/defensive rating quadrant chart, team logos plotted against the national average |
 | [`02_wbb/team_efficiency`](02_wbb/team_efficiency) | Same chart for NCAA women's basketball |
-| [`02_wbb/win_probability`](02_wbb/win_probability) | Live win probability calculator for NCAA women's basketball — [open it](https://lineup-optimizer-wnba.shinyapps.io/ncaaw-win-probability/) |
+| [`02_wbb/win_probability`](02_wbb/win_probability) | Live win probability calculator for NCAA women's basketball, [open it](https://lineup-optimizer-wnba.shinyapps.io/ncaaw-win-probability/) |
 | [`02_wbb/team_four_factors`](02_wbb/team_four_factors) | One NCAA women's team against every team in its conference on the Four Factors, offense and defense |
 | [`02_wbb/d3_player_dataset`](02_wbb/d3_player_dataset) | Season dataset for NCAA Division III women's basketball, scraped from stats.ncaa.org, with a conditionally-formatted Excel workbook |
 | [`02_wbb/player_pizza_plot`](02_wbb/player_pizza_plot) | Eight-slice percentile radar for one NCAA women's player against her conference, within her position group |
@@ -32,7 +32,7 @@ good at neither. The dotted diagonal is net rating zero.
 
 **Pizza plot.** One player, eight metrics, each slice reaching as far as that
 player's percentile in the comparison pool. The pool is the player's own
-position group — guards against guards — so a center isn't punished for a low
+position group, guards against guards, so a center isn't punished for a low
 assist rate. Slices are grouped scoring / shooting / playmaking, and a
 reference ring marks the position-group average.
 
@@ -47,8 +47,8 @@ look at the numbers behind a chart without running anything.
 
 ### 1. Install R (once)
 
-- R — <https://cran.r-project.org/>
-- RStudio Desktop — <https://posit.co/download/rstudio-desktop/> (free)
+- R, <https://cran.r-project.org/>
+- RStudio Desktop, <https://posit.co/download/rstudio-desktop/> (free)
 
 ### 2. Install the packages (once)
 
@@ -71,7 +71,7 @@ Green **Code** button at the top of this page → **Download ZIP** → unzip it.
 ### 4. Edit the CONFIG block
 
 Every script has a clearly marked `CONFIG` section near the top. That's the
-only part you need to touch — for example:
+only part you need to touch, for example:
 
 ```r
 main_player     <- "Jamisyn Heaton"
@@ -100,14 +100,14 @@ Every script has one line near where it saves:
 save_dir <- "~/Desktop"
 ```
 
-Change it to any folder you like — `"~/Documents/scouting"`, a shared drive,
+Change it to any folder you like, `"~/Documents/scouting"`, a shared drive,
 wherever. The chart and the CSV both go there, and the folder is created if it
 doesn't exist. That's the whole mechanism; there's nothing to install or
 configure.
 
 ## Use
 
-Copyright 2026 Alycia Webster. All rights reserved — see [LICENSE](LICENSE).
+Copyright 2026 Alycia Webster. All rights reserved, see [LICENSE](LICENSE).
 
 Shared for viewing and discussion. The absence of an open-source license is
 deliberate rather than an oversight; if you'd like to use any of it, just ask.
@@ -124,5 +124,5 @@ deliberate rather than an oversight; if you'd like to use any of it, just ask.
 Leagues keep the same numbered prefixes throughout: `01_mbb`, `02_wbb`,
 `03_nba`, `04_wnba`.
 
-Only the small generated CSVs are committed. Raw pulls — play-by-play,
-full player-box seasons — stay local.
+Only the small generated CSVs are committed. Raw pulls, play-by-play,
+full player-box seasons, stay local.

@@ -18,17 +18,17 @@ Logos are pulled from ESPN, so the chart is readable without a legend.
 | `scripts/r/02.5_ncaa_mbb_efficiency_plot_beat_shaded_simplelabels.R` | Reads that CSV and draws the chart. |
 
 Run the grabber first. Both save to your Desktop, so they line up with no
-configuration. To send them elsewhere, change `save_dir` in each — see the root
+configuration. To send them elsewhere, change `save_dir` in each, see the root
 README.
 
 ## Configuring
 
-**Season.** In the grabber, `load_mbb_team_box(seasons = 2026)` — `hoopR` uses
+**Season.** In the grabber, `load_mbb_team_box(seasons = 2026)`, `hoopR` uses
 the END year, so 2026 means the 2025-26 season. Change it there, and in the
 CSV/PNG filenames if you want more than one season on disk.
 
 **Which teams.** Section 3.5 of the grabber filters to a hardcoded list of
-teams (`tournament_teams`) — the 2026 NCAA tournament field. **Edit or delete
+teams (`tournament_teams`), the 2026 NCAA tournament field. **Edit or delete
 that list** to change the pool. Deleting the filter plots all of Division I,
 which is dense; a conference is usually the more useful comparison.
 
@@ -53,7 +53,7 @@ install.packages(c("hoopR", "dplyr", "readr", "ggplot2", "ggimage", "ggtext"))
 ## Data
 
 `data/ncaa_mbb_efficiency_2026.csv` is what the grabber produced for the example
-chart — one row per team with totals, possessions, ORtg, DRtg and Net Rating.
+chart, one row per team with totals, possessions, ORtg, DRtg and Net Rating.
 Committed so you can check the numbers without running the pull.
 
 ## Output

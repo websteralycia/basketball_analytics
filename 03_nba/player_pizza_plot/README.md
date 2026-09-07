@@ -15,7 +15,7 @@ player-box CSV.
 |---|---|
 | `scripts/r/nba_pizza_plot.R` | The script you run. |
 | `scripts/r/nba_player_metrics.R` | Player-level rates and percentiles. |
-| `scripts/r/nba_metrics.R` | Shared metrics layer — possessions, ratings, four factors. |
+| `scripts/r/nba_metrics.R` | Shared metrics layer, possessions, ratings, four factors. |
 | `scripts/r/nba_data.R` | Fetch layer. |
 
 `nba_pizza_plot.R` sources the other three from its own directory, so keep the

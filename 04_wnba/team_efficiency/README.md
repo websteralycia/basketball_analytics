@@ -9,7 +9,7 @@ a 4:5 Instagram crop, each on white and on transparent.
 ## The live top-up
 
 `load_wnba_player_box()` does **not** query ESPN. It downloads a pre-built data
-release that lags live games by up to a week — on 2026-08-08 the release ended
+release that lags live games by up to a week, on 2026-08-08 the release ended
 2026-08-01 and 19 completed games were missing, so a chart labelled "as of
 August 8" was really as of August 1.
 
@@ -31,7 +31,7 @@ instead. Leave it in and it visibly drags the crosshairs.
 
 ## Configuring
 
-**Season** — section 1: `load_wnba_player_box(seasons = 2026)`.
+**Season**: section 1: `load_wnba_player_box(seasons = 2026)`.
 
 **First N games.** There's an optional block around section 3 that truncates
 each team to its first N games, for like-for-like comparison early in a season.
@@ -53,8 +53,8 @@ running the pull.
 
 ## Output
 
-The script writes four PNGs — landscape and a 4:5 Instagram crop, each opaque
-and transparent — plus the season efficiency CSV. Only the landscape PNG is
+The script writes four PNGs, landscape and a 4:5 Instagram crop, each opaque
+and transparent, plus the season efficiency CSV. Only the landscape PNG is
 checked in here as an example.
 
 The landscape PNG renders at dpi 1200; drop it to 300 in section 6 if you want

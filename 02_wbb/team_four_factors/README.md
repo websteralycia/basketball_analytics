@@ -1,6 +1,6 @@
 # NCAA WBB Team Four Factors
 
-Compares one team to **every** team in its conference on the Four Factors —
+Compares one team to **every** team in its conference on the Four Factors,
 one ranked dot-chart panel per factor, offense and defense.
 
 Built for coach-facing viewing: raw values rather than percentiles, every
@@ -28,13 +28,13 @@ option before stopping. Same for the school, which lists the conference's teams.
 
 An exact name wins outright, so `"Michigan"` gives you Michigan and
 `"Michigan State"` gives you Michigan State. Partial names work too, but only
-when they're unambiguous — `"Mich"` matches both, so the script stops and lists
+when they're unambiguous, `"Mich"` matches both, so the script stops and lists
 the candidates rather than guessing which one you meant.
 
 ## Factors
 
-**Offense** — eFG%, TOV%, OREB%, FT Rate
-**Defense** — Opp eFG%, Opp TOV%, DREB%, Opp FT Rate
+**Offense**: eFG%, TOV%, OREB%, FT Rate
+**Defense**: Opp eFG%, Opp TOV%, DREB%, Opp FT Rate
 
 Computed from season-long totals against *all* opponents, not just conference
 games. The conference average is leave-one-out: it excludes the featured team,

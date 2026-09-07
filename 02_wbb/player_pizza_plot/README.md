@@ -2,7 +2,7 @@
 
 One player, eight metrics, each slice reaching as far as that player's
 percentile inside the comparison pool. The pool is her conference, narrowed to
-her **position group** — guards against guards — so a center isn't punished
+her **position group**: guards against guards, so a center isn't punished
 for a low assist rate. A reference ring marks the position-group average, so
 you can see at a glance which slices are actually above the bar.
 
@@ -41,7 +41,7 @@ Note the featured player has to clear the threshold too.
 
 Grouped scoring / shooting / playmaking, so related metrics sit next to each
 other rather than being scattered around the circle. Change the set in section
-8.1 (`key_metrics_pctile`) — the labels, grouping colors and reference ring all
+8.1 (`key_metrics_pctile`), the labels, grouping colors and reference ring all
 follow from that vector.
 
 ## Packages
@@ -56,7 +56,7 @@ without a headshot if none is found.
 
 ## Data
 
-`data/wbb_big_ten_2026.csv` is the conference pool behind the example chart —
+`data/wbb_big_ten_2026.csv` is the conference pool behind the example chart,
 one row per player, with raw per-40 rates and the weighted percentiles the
 slices are drawn from.
 

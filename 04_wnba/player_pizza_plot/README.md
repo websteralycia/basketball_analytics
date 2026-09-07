@@ -19,7 +19,7 @@ PERIOD_TEXT  <- NULL      # or override it with a string of your own
 ```
 
 Swap in any player and the rest follows. The comparison pool is her own
-position group, and the title names it from her position — put a center in and
+position group, and the title names it from her position, put a center in and
 it reads "vs. All WNBA Centers" with a "Center Average" legend.
 
 ### What the title says about scope
@@ -38,7 +38,7 @@ can't go stale as the season runs on:
 `"date"` is the default because the title sits on one line with the player and
 team; the longer forms crowd it.
 
-Set `PERIOD_TEXT` to any string to override it — use that if you deliberately
+Set `PERIOD_TEXT` to any string to override it, use that if you deliberately
 want a fixed window, e.g. `PERIOD_TEXT <- "First 10 Games"`.
 
 and the season in section 1:
@@ -51,7 +51,7 @@ wnba_player_box_2026 <- load_wnba_player_box(seasons = 2026)
 
 **Regular season only.** By default every game in the pull is included, which
 means the All-Star game is in there too. Section 2 has a commented-out
-`filter(season_type == 2)` — note that on the WNBA feed the All-Star game also
+`filter(season_type == 2)`, note that on the WNBA feed the All-Star game also
 carries `season_type == 2`, so that filter alone won't remove it. If All-Star
 inclusion matters for your comparison, filter on franchise `team_id` instead.
 
@@ -73,19 +73,19 @@ install.packages(c("wehoop", "dplyr", "readr", "ggplot2", "tidyr",
 ## Data
 
 `data/wnba_player_season_2026.csv` is the league pool behind the example
-chart — one row per player with every computed column: totals, per-36 rates,
+chart, one row per player with every computed column: totals, per-36 rates,
 the advanced metrics, and the within-position weighted percentiles the slices
 are drawn from.
 
 The script also writes a trimmed `wnba_player_season_2026_lab.csv` alongside
-it — the same rows with fewer columns. That one isn't committed, since the
+it, the same rows with fewer columns. That one isn't committed, since the
 table above is a superset of it.
 
 ## Output
 
 A PNG at 8×8in, 300dpi, named `pizza_plot_<player>_<season>.png`, plus the two
 CSVs. The WNBA season runs inside a single calendar year, so the stamp is one
-year (`2026`), not a split `2025-26` — and it's read off the data, not typed in.
+year (`2026`), not a split `2025-26`, and it's read off the data, not typed in.
 
 ## Label spacing
 
@@ -99,6 +99,6 @@ PLOT_MAX     <- 1.35   # panel extent -- this is what sets the wheel's size
 
 The badge hangs inward from `LABEL_RADIUS`, so it has to clear a
 100th-percentile slice. If you change the metric names or the font size and
-they start crowding the bars, raise `LABEL_RADIUS`. Leave `PLOT_MAX` alone —
+they start crowding the bars, raise `LABEL_RADIUS`. Leave `PLOT_MAX` alone:
 `coord_polar` runs with `clip = "off"`, so labels can sit outside the panel,
 and raising it just shrinks the wheel.

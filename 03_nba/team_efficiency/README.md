@@ -14,8 +14,8 @@ a vendor export, or anything else with the right columns.
 | File | What it is |
 |---|---|
 | `scripts/r/nba_efficiency_plot.R` | The script you run. |
-| `scripts/r/nba_metrics.R` | The metrics layer — possessions, ratings, four factors. Pure functions, no I/O. |
-| `scripts/r/nba_data.R` | The fetch layer — everything that touches the network or disk. |
+| `scripts/r/nba_metrics.R` | The metrics layer, possessions, ratings, four factors. Pure functions, no I/O. |
+| `scripts/r/nba_data.R` | The fetch layer, everything that touches the network or disk. |
 
 `nba_efficiency_plot.R` sources the other two from its own directory, so keep
 the three together.
@@ -47,7 +47,7 @@ INPUT_MAP <- c(tov = "turnovers", fg3m = "threes_made")
 ```
 
 Logos need `team_abbreviation`. Without it the script falls back to labelled
-points rather than failing — still readable, just not branded.
+points rather than failing, still readable, just not branded.
 
 ## The possession estimate, and why it matters
 
@@ -65,7 +65,7 @@ ORtg and +0.05 DRtg**, worst single team 0.64.
 
 The simpler `FGA + 0.44*FTA + TOV - OREB` is often called the NBA.com formula,
 but it does not reproduce NBA.com. It subtracts the raw offensive rebound
-count, which undercounts extended possessions — team offensive rebounds and
+count, which undercounts extended possessions, team offensive rebounds and
 missed-free-throw rebounds are never credited to a player, so they never reach
 the box score. Measured across the same 30 teams it overstates possessions by
 ~1.8 a game and reads **2.0 points low on both ORtg and DRtg**.
@@ -94,11 +94,11 @@ install.packages(c("hoopR", "nbaplotR", "dplyr", "readr", "ggplot2",
 ## Data
 
 `data/NBA_Efficiency_2025_26.csv` is the season efficiency table behind the
-example chart — one row per team. Committed so you can check the numbers
+example chart, one row per team. Committed so you can check the numbers
 without running the pull.
 
 ## Output
 
-The script writes four PNGs — landscape 10×7in and a 4:5 Instagram crop, each
-opaque and transparent — plus the season efficiency CSV. Only the landscape
+The script writes four PNGs, landscape 10×7in and a 4:5 Instagram crop, each
+opaque and transparent, plus the season efficiency CSV. Only the landscape
 PNG is checked in here as an example.
