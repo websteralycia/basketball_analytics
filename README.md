@@ -33,8 +33,7 @@ good at neither. The dotted diagonal is net rating zero.
 **Pizza plot.** One player, eight metrics, each slice reaching as far as that
 player's percentile in the comparison pool. The pool is the player's own
 position group, guards against guards, so a center isn't punished for a low
-assist rate. Slices are grouped scoring / shooting / playmaking, and a
-reference ring marks the position-group average.
+assist rate.
 
 ## Running a script
 
