@@ -1,7 +1,7 @@
 # WNBA Team Efficiency Landscape
 
 Every team plotted by offensive rating against defensive rating, crosshairs at
-the league average, logos instead of points. Exported four ways: landscape and
+the league average, logos instead of points. Exported four ways, landscape and
 a 4:5 Instagram crop, each on white and on transparent.
 
 ![Example](outputs/WNBA_Efficiency_AUG_2026_fullseason.png)
