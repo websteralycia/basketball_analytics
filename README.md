@@ -18,6 +18,7 @@ change, team, player, conference, season, and sensible defaults for the rest.
 | [`02_wbb/d3_player_dataset`](02_wbb/d3_player_dataset) | Season dataset for NCAA Division III women's basketball, scraped from stats.ncaa.org, with a conditionally-formatted Excel workbook |
 | [`02_wbb/player_pizza_plot`](02_wbb/player_pizza_plot) | Eight-slice percentile radar for one NCAA women's player against her conference, within her position group |
 | [`03_nba/team_efficiency`](03_nba/team_efficiency) | NBA efficiency landscape for all 30 teams, plus a 4:5 Instagram crop and transparent variants |
+| [`03_nba/metrics_layer`](03_nba/metrics_layer) | The tested metric code behind the NBA charts, source-agnostic: hoopR, or a CSV handed to you |
 | [`03_nba/player_pizza_plot`](03_nba/player_pizza_plot) | NBA player percentile radar against the league, within position |
 | [`04_wnba/team_efficiency`](04_wnba/team_efficiency) | WNBA efficiency landscape, with a live top-up for games the data release hasn't picked up yet |
 | [`04_wnba/player_pizza_plot`](04_wnba/player_pizza_plot) | WNBA player percentile radar |
