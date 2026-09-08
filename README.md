@@ -25,18 +25,6 @@ change, team, player, conference, season, and sensible defaults for the rest.
 | [`06_lineup_optimizer`](06_lineup_optimizer) | WNBA lineup builder: completes a five under position and contract constraints, with usage-stress diminishing returns, [open it](https://lineup-optimizer-wnba.shinyapps.io/lineup-optimizer-contract-type-deployment/) |
 | [`05_gameprep`](05_gameprep) | Cross-league scouting platform: pregame card, dashboard, and a question-answering agent over the same tidy layer |
 
-## What the two chart types are
-
-**Efficiency landscape.** Every team plotted by points scored per 100
-possessions (across) against points allowed per 100 possessions (up, reversed
-so better defense is higher). Dashed crosshairs sit at the league average, so
-the top-right quadrant is teams good at both ends and the bottom-left is teams
-good at neither. The dotted diagonal is net rating zero.
-
-**Pizza plot.** One player, eight metrics, each slice reaching as far as that
-player's percentile in the comparison pool. The pool is the player's own
-position group, guards against guards, so a center isn't punished for a low
-assist rate.
 
 ## Running a script
 
